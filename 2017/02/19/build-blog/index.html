@@ -112,7 +112,7 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487523314647&di=2ec0133574123bd822d40ec6528ae5d8&imgtype=0&src=http%3A%2F%2Fanyinfa.com%2Fcontent%2Fimages%2F2014%2FApr%2F0.jpg">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487524135710&di=4778cb82a0939fe87d60425737ab6320&imgtype=0&src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F577880%2F201511%2F577880-20151122023641374-876573777.png">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487524869050&di=387f01cbcdad6fe3b01c2e411c10246a&imgtype=0&src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F855959%2F201607%2F855959-20160729104619200-2128697779.png">
-<meta property="og:updated_time" content="2017-02-19T14:54:50.000Z">
+<meta property="og:updated_time" content="2017-02-19T15:03:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建">
 <meta name="twitter:description" content="我的博客是利用 hexo 在 github page 上搭建的。
@@ -407,8 +407,18 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 <p>修改hexo配置文件 _config.yml文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: [theme name]</div></pre></td></tr></table></figure></p>
 <p>同上,运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g //生成静态文件</div><div class="line">hexo d //发布到github page项目中</div></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h3><hr>
-<h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><hr>
+<h3 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h3><p>github page 支持自定义域名</p>
+<p>方法如下:</p>
+<ol>
+<li>在 <code>source/</code> 目录下 添加<code>CNAME</code>文件，内容为 xxx.com   (xxx.com 是你的自定义域名)</li>
+<li>先添加一个CNAME，主机记录写@，后面记录值写上你的 <a href="http://xxxx.github.io" target="_blank" rel="external">http://xxxx.github.io</a></li>
+<li>再添加一个CNAME，主机记录写www，后面记录值也是 <a href="http://xxxx.github.io" target="_blank" rel="external">http://xxxx.github.io</a></li>
+</ol>
+<hr>
+<h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><p>更多高级设置可以查看 <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT使用文档</a></p>
+<p>里面可以设置侧边社交链接、设置字体、代码高亮、打赏功能、友情链接等。</p>
+<p>还可以可以添加第三方服务 比如：多说评论 百度统计 阅读次数统计 查询服务等。</p>
+<hr>
 
       
     </div>

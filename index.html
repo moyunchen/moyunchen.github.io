@@ -382,8 +382,18 @@
 <p>修改hexo配置文件 _config.yml文件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: [theme name]</div></pre></td></tr></table></figure></p>
 <p>同上,运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g //生成静态文件</div><div class="line">hexo d //发布到github page项目中</div></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h3><hr>
-<h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><hr>
+<h3 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h3><p>github page 支持自定义域名</p>
+<p>方法如下:</p>
+<ol>
+<li>在 <code>source/</code> 目录下 添加<code>CNAME</code>文件，内容为 xxx.com   (xxx.com 是你的自定义域名)</li>
+<li>先添加一个CNAME，主机记录写@，后面记录值写上你的 <a href="http://xxxx.github.io" target="_blank" rel="external">http://xxxx.github.io</a></li>
+<li>再添加一个CNAME，主机记录写www，后面记录值也是 <a href="http://xxxx.github.io" target="_blank" rel="external">http://xxxx.github.io</a></li>
+</ol>
+<hr>
+<h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><p>更多高级设置可以查看 <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT使用文档</a></p>
+<p>里面可以设置侧边社交链接、设置字体、代码高亮、打赏功能、友情链接等。</p>
+<p>还可以可以添加第三方服务 比如：多说评论 百度统计 阅读次数统计 查询服务等。</p>
+<hr>
 
           
         
