@@ -88,7 +88,7 @@
 
 
 <meta name="description" content="我的博客是利用 hexo 在 github page 上搭建的。
-主题是用的 next 主题
+主题是用的 NexT 主题
 然后使用自定义域名 wangxaing.net.cn 替代 moyunchen.github.io
 教程
 安装node
@@ -101,7 +101,7 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 <meta property="og:url" content="http://yoursite.com/2017/02/19/build-blog/index.html">
 <meta property="og:site_name" content="王翔的技术博客">
 <meta property="og:description" content="我的博客是利用 hexo 在 github page 上搭建的。
-主题是用的 next 主题
+主题是用的 NexT 主题
 然后使用自定义域名 wangxaing.net.cn 替代 moyunchen.github.io
 教程
 安装node
@@ -110,11 +110,12 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 如果显示1v6.9.1
 版本号不一">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487523314647&di=2ec0133574123bd822d40ec6528ae5d8&imgtype=0&src=http%3A%2F%2Fanyinfa.com%2Fcontent%2Fimages%2F2014%2FApr%2F0.jpg">
-<meta property="og:updated_time" content="2017-02-19T14:07:35.000Z">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487524135710&di=4778cb82a0939fe87d60425737ab6320&imgtype=0&src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F577880%2F201511%2F577880-20151122023641374-876573777.png">
+<meta property="og:updated_time" content="2017-02-19T14:25:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建">
 <meta name="twitter:description" content="我的博客是利用 hexo 在 github page 上搭建的。
-主题是用的 next 主题
+主题是用的 NexT 主题
 然后使用自定义域名 wangxaing.net.cn 替代 moyunchen.github.io
 教程
 安装node
@@ -361,7 +362,7 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 
       
         <p>我的博客是利用 <a href="https://hexo.io/" target="_blank" rel="external">hexo</a> 在 <a href="https://pages.github.com/" target="_blank" rel="external">github page</a> 上搭建的。</p>
-<p>主题是用的 <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">next</a> 主题</p>
+<p>主题是用的 <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT</a> 主题</p>
 <p>然后使用自定义域名 <a href="http://wangxaing.net.cn" target="_blank" rel="external">wangxaing.net.cn</a> 替代 <a href="http://moyunchen.github.io" target="_blank" rel="external">moyunchen.github.io</a></p>
 <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><hr>
 <h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1487523314647&amp;di=2ec0133574123bd822d40ec6528ae5d8&amp;imgtype=0&amp;src=http%3A%2F%2Fanyinfa.com%2Fcontent%2Fimages%2F2014%2FApr%2F0.jpg" alt="node"></p>
@@ -370,8 +371,21 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
 <p>如果显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">v6.9.1</div></pre></td></tr></table></figure></p>
 <p>版本号不一定都是6.9.1,只要是显示了版本号，就表示安装成功</p>
 <hr>
-<h3 id="安装hexo-cli"><a href="#安装hexo-cli" class="headerlink" title="安装hexo-cli"></a>安装hexo-cli</h3><hr>
-<h3 id="新建hexo项目"><a href="#新建hexo项目" class="headerlink" title="新建hexo项目"></a>新建hexo项目</h3><hr>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1487524135710&amp;di=4778cb82a0939fe87d60425737ab6320&amp;imgtype=0&amp;src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F577880%2F201511%2F577880-20151122023641374-876573777.png" alt="git"></p>
+<p>我使用的是mac电脑,本身就已经装好了git。如果你是linux电脑或者windows，可以到 <a href="https://git-scm.com/downloads" target="_blank" rel="external">官网</a> 下载安装包后点击安装。</p>
+<p>同理,在命令行输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure></p>
+<p>如果显示了当前git客户端版本,则表示安装成功。</p>
+<hr>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>在命令行输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo -g</div></pre></td></tr></table></figure></p>
+<p>npm是node的包管理器,上面的命令表示在全局安装hexo模块</p>
+<hr>
+<h3 id="新建hexo项目"><a href="#新建hexo项目" class="headerlink" title="新建hexo项目"></a>新建hexo项目</h3><p>在命令行输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir blog</div><div class="line">cd blog</div><div class="line">hexo init</div></pre></td></tr></table></figure></p>
+<p>项目结构就搭建好了,blog项目的目的是生成博客网站的静态文件，并封装好了提交到github的相关命令</p>
+<hr>
+<h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><p>生成静态文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（hexo g也可以）</div></pre></td></tr></table></figure></p>
+<p>本地运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server（hexo s也可以）</div></pre></td></tr></table></figure></p>
+<p>在浏览器中输入 localhost:4000 即可查看网站效果。</p>
+<hr>
 <h3 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h3><hr>
 <h3 id="配置git地址"><a href="#配置git地址" class="headerlink" title="配置git地址"></a>配置git地址</h3><hr>
 <h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><hr>
@@ -591,7 +605,7 @@ node安装还是比较简单的,到 官网 或者 中文官网 下载安装包�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node"><span class="nav-number">1.1.</span> <span class="nav-text">安装node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo-cli"><span class="nav-number">1.2.</span> <span class="nav-text">安装hexo-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建hexo项目"><span class="nav-number">1.3.</span> <span class="nav-text">新建hexo项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册github"><span class="nav-number">1.4.</span> <span class="nav-text">注册github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git地址"><span class="nav-number">1.5.</span> <span class="nav-text">配置git地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发表文章"><span class="nav-number">1.6.</span> <span class="nav-text">发表文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换主题"><span class="nav-number">1.7.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置自定义域名"><span class="nav-number">1.8.</span> <span class="nav-text">设置自定义域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级设置"><span class="nav-number">1.9.</span> <span class="nav-text">高级设置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node"><span class="nav-number">1.1.</span> <span class="nav-text">安装node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Git"><span class="nav-number">1.2.</span> <span class="nav-text">安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建hexo项目"><span class="nav-number">1.4.</span> <span class="nav-text">新建hexo项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地运行"><span class="nav-number">1.5.</span> <span class="nav-text">本地运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册github"><span class="nav-number">1.6.</span> <span class="nav-text">注册github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置git地址"><span class="nav-number">1.7.</span> <span class="nav-text">配置git地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发表文章"><span class="nav-number">1.8.</span> <span class="nav-text">发表文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更换主题"><span class="nav-number">1.9.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置自定义域名"><span class="nav-number">1.10.</span> <span class="nav-text">设置自定义域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级设置"><span class="nav-number">1.11.</span> <span class="nav-text">高级设置</span></a></li></ol></li></ol></div>
             
 
           </div>
