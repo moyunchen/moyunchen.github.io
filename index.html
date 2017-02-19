@@ -358,15 +358,18 @@
 <h3 id="新建hexo项目"><a href="#新建hexo项目" class="headerlink" title="新建hexo项目"></a>新建hexo项目</h3><p>在命令行输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir blog</div><div class="line">cd blog</div><div class="line">hexo init</div></pre></td></tr></table></figure></p>
 <p>项目结构就搭建好了,blog项目的目的是生成博客网站的静态文件，并封装好了提交到github的相关命令</p>
 <hr>
-<h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><p>生成静态文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（hexo g也可以）</div></pre></td></tr></table></figure></p>
-<p>本地运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server（hexo s也可以）</div></pre></td></tr></table></figure></p>
+<h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><p>生成静态文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（hexo g 也可以）</div></pre></td></tr></table></figure></p>
+<p>本地运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server（hexo s 也可以）</div></pre></td></tr></table></figure></p>
 <p>在浏览器中输入 localhost:4000 即可查看网站效果。</p>
 <hr>
 <h3 id="注册github"><a href="#注册github" class="headerlink" title="注册github"></a>注册github</h3><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1487524869050&amp;di=387f01cbcdad6fe3b01c2e411c10246a&amp;imgtype=0&amp;src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F855959%2F201607%2F855959-20160729104619200-2128697779.png" alt="github"></p>
 <p><a href="github.com">GitHub</a> 是一个面向开源及私有软件项目的托管平台，因为只支持 Git 作为唯一的版本库格式进行托管，故名 GitHub。</p>
 <p><a href="github.com">GitHub</a> 于 2008 年 4 月 10 日正式上线，除了 Git 代码仓库托管及基本的 Web 管理界面以外，还提供了订阅、讨论组、文本渲染、在线文件编辑器、协作图谱（报表）、代码片段分享（Gist）等功能。目前，其注册用户已经超过350万，托管版本数量也是非常之多，其中不乏知名开源项目 Ruby on Rails、jQuery、python 等。</p>
+<p>在 github 中创建一个 repository, 命名为<code>[账号名].github.io</code>。 </p>
 <hr>
-<h3 id="配置git地址"><a href="#配置git地址" class="headerlink" title="配置git地址"></a>配置git地址</h3><hr>
+<h3 id="配置git地址"><a href="#配置git地址" class="headerlink" title="配置git地址"></a>配置git地址</h3><p>找到blog目录中的_config.yml文件,修改以下部分,将账号名换为自己的账号名称即可。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https:<span class="comment">//github.com/[账号名]/[账号名].github.io.git</span></div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>发布网站到github page,运行一下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy (hexo d 也可以)</div></pre></td></tr></table></figure></p>
+<hr>
 <h3 id="发表文章"><a href="#发表文章" class="headerlink" title="发表文章"></a>发表文章</h3><hr>
 <h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><hr>
 <h3 id="设置自定义域名"><a href="#设置自定义域名" class="headerlink" title="设置自定义域名"></a>设置自定义域名</h3><hr>
