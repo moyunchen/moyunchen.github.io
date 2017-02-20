@@ -87,19 +87,31 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="规则每个格子的生死遵循下面的原则：
+如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
+如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
+在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
+
+代码1234567891011121314151617181920212223242">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/02/19/hello-world/index.html">
+<meta property="og:title" content="生命游戏">
+<meta property="og:url" content="http://yoursite.com/2017/02/20/lifegame/index.html">
 <meta property="og:site_name" content="王翔的技术博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-02-19T07:32:40.000Z">
+<meta property="og:description" content="规则每个格子的生死遵循下面的原则：
+如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
+如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
+在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
+
+代码1234567891011121314151617181920212223242">
+<meta property="og:updated_time" content="2017-02-20T12:57:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="生命游戏">
+<meta name="twitter:description" content="规则每个格子的生死遵循下面的原则：
+如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
+如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
+在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
+
+代码1234567891011121314151617181920212223242">
 
 
 
@@ -127,13 +139,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/19/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/20/lifegame/"/>
 
 
 
 
 
-  <title> Hello World | 王翔的技术博客 </title>
+  <title> 生命游戏 | 王翔的技术博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +264,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/19/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/20/lifegame/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="王翔">
@@ -276,7 +288,7 @@ Quick">
             
             
               
-                Hello World
+                生命游戏
               
             
           </h1>
@@ -291,8 +303,8 @@ Quick">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-19T15:32:40+08:00">
-                2017-02-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T20:47:34+08:00">
+                2017-02-20
               </time>
             
 
@@ -310,8 +322,8 @@ Quick">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/19/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/19/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/02/20/lifegame/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/lifegame/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -337,15 +349,12 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>每个格子的生死遵循下面的原则：</p>
+<p>如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。</p>
+<p>如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；</p>
+<p>在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">    /**</div><div class="line">    * @desc 求周围的存活的细胞个数</div><div class="line">    * @param map 当前细胞地图</div><div class="line">    * @param x y 当前细胞位置</div><div class="line">    */</div><div class="line">    round: (map,x,y) =&gt;&#123;</div><div class="line">        let count = 0</div><div class="line">        map.forEach((row,i) =&gt;&#123;</div><div class="line">            row.forEach((col,j) =&gt;&#123;</div><div class="line">                if((Math.abs(i-x) == 1 || Math.abs(j-y) == 1) </div><div class="line">                    &amp;&amp; Math.abs(i-x) &lt; 2 &amp;&amp; Math.abs(j-y) &lt; 2)</div><div class="line">                    count += map[i][j] ? map[i][j] : 0</div><div class="line">            &#125;)</div><div class="line">        &#125;)</div><div class="line">        return count</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @desc 返回一个细胞下一时间的状态</div><div class="line">     * @param status 细胞当前状态 0:死 1:活</div><div class="line">     * @param count 细胞当前周围的存活细胞数量</div><div class="line">     */</div><div class="line">    nextCellStatus: (status,count) =&gt;&#123;</div><div class="line">        if(count == 3) return 1</div><div class="line">        if(count == 2) return status</div><div class="line">        return 0</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @desc 生成下一时刻的地图</div><div class="line">     * @param 当前时刻的map</div><div class="line">     * @return 下一时刻的map</div><div class="line">     */</div><div class="line">    nextMap: (map) =&gt;&#123;</div><div class="line">        let newmap = map.map(row =&gt; row.map(col =&gt; 0))</div><div class="line">        map.map((row,i) =&gt;&#123;</div><div class="line">            row.map((col,j) =&gt;&#123;</div><div class="line">                const count = round(map,i,j)</div><div class="line">                newmap[i][j] = nextCellStatus(map[i][j],count)</div><div class="line">            &#125;)</div><div class="line">        &#125;)</div><div class="line">        return newmap</div><div class="line">    &#125;</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">## 其他</div><div class="line"></div><div class="line">我已经把这个代码封装成一个npm包。通过 `npm install lifegame` 即可安装。</div><div class="line"></div><div class="line">[npm地址](https://www.npmjs.com/package/lifegame)</div><div class="line"></div><div class="line">[github地址](https://github.com/moyunchen/lifegame)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -397,15 +406,15 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/19/build-blog/" rel="next" title="个人博客搭建">
+                <i class="fa fa-chevron-left"></i> 个人博客搭建
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/19/build-blog/" rel="prev" title="个人博客搭建">
-                个人博客搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +440,8 @@ Quick">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/19/hello-world/"
-           data-title="Hello World" data-url="http://yoursite.com/2017/02/19/hello-world/">
+      <div class="ds-thread" data-thread-key="2017/02/20/lifegame/"
+           data-title="生命游戏" data-url="http://yoursite.com/2017/02/20/lifegame/">
       </div>
     
   </div>
@@ -560,7 +569,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#规则"><span class="nav-number">1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

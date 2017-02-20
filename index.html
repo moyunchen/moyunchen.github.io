@@ -247,6 +247,142 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/20/lifegame/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="王翔">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/tx.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="王翔的技术博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="王翔的技术博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/20/lifegame/" itemprop="url">
+                  生命游戏
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T20:47:34+08:00">
+                2017-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/20/lifegame/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/lifegame/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>每个格子的生死遵循下面的原则：</p>
+<p>如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。</p>
+<p>如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；</p>
+<p>在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）</p>
+<hr>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">    /**</div><div class="line">    * @desc 求周围的存活的细胞个数</div><div class="line">    * @param map 当前细胞地图</div><div class="line">    * @param x y 当前细胞位置</div><div class="line">    */</div><div class="line">    round: (map,x,y) =&gt;&#123;</div><div class="line">        let count = 0</div><div class="line">        map.forEach((row,i) =&gt;&#123;</div><div class="line">            row.forEach((col,j) =&gt;&#123;</div><div class="line">                if((Math.abs(i-x) == 1 || Math.abs(j-y) == 1) </div><div class="line">                    &amp;&amp; Math.abs(i-x) &lt; 2 &amp;&amp; Math.abs(j-y) &lt; 2)</div><div class="line">                    count += map[i][j] ? map[i][j] : 0</div><div class="line">            &#125;)</div><div class="line">        &#125;)</div><div class="line">        return count</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @desc 返回一个细胞下一时间的状态</div><div class="line">     * @param status 细胞当前状态 0:死 1:活</div><div class="line">     * @param count 细胞当前周围的存活细胞数量</div><div class="line">     */</div><div class="line">    nextCellStatus: (status,count) =&gt;&#123;</div><div class="line">        if(count == 3) return 1</div><div class="line">        if(count == 2) return status</div><div class="line">        return 0</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @desc 生成下一时刻的地图</div><div class="line">     * @param 当前时刻的map</div><div class="line">     * @return 下一时刻的map</div><div class="line">     */</div><div class="line">    nextMap: (map) =&gt;&#123;</div><div class="line">        let newmap = map.map(row =&gt; row.map(col =&gt; 0))</div><div class="line">        map.map((row,i) =&gt;&#123;</div><div class="line">            row.map((col,j) =&gt;&#123;</div><div class="line">                const count = round(map,i,j)</div><div class="line">                newmap[i][j] = nextCellStatus(map[i][j],count)</div><div class="line">            &#125;)</div><div class="line">        &#125;)</div><div class="line">        return newmap</div><div class="line">    &#125;</div><div class="line"></div><div class="line">---</div><div class="line"></div><div class="line">## 其他</div><div class="line"></div><div class="line">我已经把这个代码封装成一个npm包。通过 `npm install lifegame` 即可安装。</div><div class="line"></div><div class="line">[npm地址](https://www.npmjs.com/package/lifegame)</div><div class="line"></div><div class="line">[github地址](https://github.com/moyunchen/lifegame)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/19/build-blog/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -611,7 +747,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
