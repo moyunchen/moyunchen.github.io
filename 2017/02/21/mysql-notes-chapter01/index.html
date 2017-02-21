@@ -106,7 +106,7 @@ MySQL逻辑架构
 第一层架构 主要功能：连接处理，授权认证，安全等。
 第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
 <meta property="og:image" content="http://img.dnbcw.info/2012316/3881291.png">
-<meta property="og:updated_time" content="2017-02-21T13:49:24.000Z">
+<meta property="og:updated_time" content="2017-02-21T14:17:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第一章 MySQL架构与历史">
 <meta name="twitter:description" content="MySQL的特性是它的存储引擎架构。
@@ -394,7 +394,59 @@ MySQL逻辑架构
 <p>行级锁只在存储引擎层次实现，而在MySQL服务器层没有实现，服务器层完全不了解存储引擎中的锁实现。</p>
 <p>所有存储引擎都以自己的方式实现了锁机制。</p>
 <hr>
-<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><hr>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>事务就是一组原子性的SQL查询，或者说一个独立的工作单元。</p>
+<p>事务内的语句，要么全部成功，要么全部失败。</p>
+<p>事务的ACID特性，表示<code>原子性</code>(atomicity)、<code>一致性</code>(consistency)、<code>隔离性</code>(isolation)、<code>永久性</code>(durability)</p>
+<p>用户可以根据业务是否需要事务处理，来选择合适的存储引擎。</p>
+<p>对于不需要事务的查询类应用，可以选择一个非事务型的存储引擎。</p>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><p>在SQL标准中定义了4种隔离级别，每一种级别都规定了一个事务中所做的修改，哪些在事务内和事务间是可见的，哪些是不可见的。</p>
+<p>较低级别的隔离通常可以执行更高的并发，系统的开销也更低。</p>
+<p><strong>READ UNCOMMITTED</strong> (未提交读)</p>
+<p><strong>READ COMMITTED</strong> (提交读)</p>
+<p><strong>REPEATABLE READ</strong> (可重复读)</p>
+<p><strong>SERIALIZABLE</strong> (可串行化)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">隔离级别</th>
+<th style="text-align:center">脏读可能性</th>
+<th style="text-align:center">不可重复读可能性</th>
+<th style="text-align:center">幻读可能性</th>
+<th style="text-align:center">加锁读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">READ UNCOMMITTED</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">NO</td>
+</tr>
+<tr>
+<td style="text-align:center">READ COMMITTED</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">NO</td>
+</tr>
+<tr>
+<td style="text-align:center">REPEATABLE READ</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">YES</td>
+<td style="text-align:center">NO</td>
+</tr>
+<tr>
+<td style="text-align:center">SERIALIZABLE</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">NO</td>
+<td style="text-align:center">YES</td>
+</tr>
+</tbody>
+</table>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h3><h3 id="MySQL中的事务"><a href="#MySQL中的事务" class="headerlink" title="MySQL中的事务"></a>MySQL中的事务</h3><hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><hr>
 <h2 id="Mysql时间线"><a href="#Mysql时间线" class="headerlink" title="Mysql时间线"></a>Mysql时间线</h2><hr>
@@ -613,7 +665,7 @@ MySQL逻辑架构
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">MySQL逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接管理与安全性"><span class="nav-number">1.1.</span> <span class="nav-text">连接管理与安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化与执行"><span class="nav-number">1.2.</span> <span class="nav-text">优化与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁粒度"><span class="nav-number">2.2.</span> <span class="nav-text">锁粒度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多版本并发控制"><span class="nav-number">4.</span> <span class="nav-text">多版本并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的存储引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql时间线"><span class="nav-number">6.</span> <span class="nav-text">Mysql时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的开发模式"><span class="nav-number">7.</span> <span class="nav-text">Mysql的开发模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">MySQL逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接管理与安全性"><span class="nav-number">1.1.</span> <span class="nav-text">连接管理与安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化与执行"><span class="nav-number">1.2.</span> <span class="nav-text">优化与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁粒度"><span class="nav-number">2.2.</span> <span class="nav-text">锁粒度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隔离级别"><span class="nav-number">3.1.</span> <span class="nav-text">隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">3.2.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务日志"><span class="nav-number">3.3.</span> <span class="nav-text">事务日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中的事务"><span class="nav-number">3.4.</span> <span class="nav-text">MySQL中的事务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多版本并发控制"><span class="nav-number">4.</span> <span class="nav-text">多版本并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的存储引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql时间线"><span class="nav-number">6.</span> <span class="nav-text">Mysql时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的开发模式"><span class="nav-number">7.</span> <span class="nav-text">Mysql的开发模式</span></a></li></ol></div>
             
 
           </div>
