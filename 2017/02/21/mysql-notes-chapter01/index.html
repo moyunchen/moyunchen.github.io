@@ -106,7 +106,7 @@ MySQL逻辑架构
 第一层架构 主要功能：连接处理，授权认证，安全等。
 第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
 <meta property="og:image" content="http://img.dnbcw.info/2012316/3881291.png">
-<meta property="og:updated_time" content="2017-02-21T14:17:50.000Z">
+<meta property="og:updated_time" content="2017-02-21T15:01:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第一章 MySQL架构与历史">
 <meta name="twitter:description" content="MySQL的特性是它的存储引擎架构。
@@ -448,7 +448,21 @@ MySQL逻辑架构
 </table>
 <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h3><h3 id="MySQL中的事务"><a href="#MySQL中的事务" class="headerlink" title="MySQL中的事务"></a>MySQL中的事务</h3><hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
-<h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><hr>
+<h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><p>InnoDB存储引擎是MySQL自5.5版本以来的默认事务型引擎，也是最重要、使用最广泛的存储引擎。</p>
+<p>它被设计用来处理大量的短期事务，在非事务行的存储的需求中也很流行。</p>
+<p>除非有非常特别的原因需要使用其他的存储引擎，否则应该优先考虑使用InnoDB引擎。</p>
+<h3 id="MyISAM-存储引擎"><a href="#MyISAM-存储引擎" class="headerlink" title="MyISAM 存储引擎"></a>MyISAM 存储引擎</h3><p>在MySQL5.1及之前的版本，MyISAM是默认的存储引擎，MyISAM不支持事务和行级锁。</p>
+<h3 id="其他存储引擎"><a href="#其他存储引擎" class="headerlink" title="其他存储引擎"></a>其他存储引擎</h3><p><strong>Archive引擎</strong> </p>
+<p>Archive存储引擎只支持INSERT和SELECT操作</p>
+<p><strong>Backhole引擎</strong></p>
+<p>Backhole没有实现任何的存储机制，他会丢弃所有插入的数据，不做保存，服务器会记录Backhole表的日志。</p>
+<p><strong>CSV引擎</strong></p>
+<p>CSV引擎可以将普通的csv文件作为MySQL的表来处理，但是这种引表不支持索引。</p>
+<p><strong>Memory引擎</strong></p>
+<p>Memory引擎数据保存在内存中，查询速度快，但是重启之后数据丢失，表结构还会保留。</p>
+<p><strong>NDB集群引擎</strong></p>
+<p>MySQL服务器，NDB集群存储引擎，以及分布式的、share-nothing的、容灾的、高可用的NDB数据库的组合，被称为MySQL集群(<code>MySQL Cluster</code>)。</p>
+<h3 id="第三方存储引擎"><a href="#第三方存储引擎" class="headerlink" title="第三方存储引擎"></a>第三方存储引擎</h3><hr>
 <h2 id="Mysql时间线"><a href="#Mysql时间线" class="headerlink" title="Mysql时间线"></a>Mysql时间线</h2><hr>
 <h2 id="Mysql的开发模式"><a href="#Mysql的开发模式" class="headerlink" title="Mysql的开发模式"></a>Mysql的开发模式</h2><hr>
 
@@ -665,7 +679,7 @@ MySQL逻辑架构
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">MySQL逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接管理与安全性"><span class="nav-number">1.1.</span> <span class="nav-text">连接管理与安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化与执行"><span class="nav-number">1.2.</span> <span class="nav-text">优化与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁粒度"><span class="nav-number">2.2.</span> <span class="nav-text">锁粒度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隔离级别"><span class="nav-number">3.1.</span> <span class="nav-text">隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">3.2.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务日志"><span class="nav-number">3.3.</span> <span class="nav-text">事务日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中的事务"><span class="nav-number">3.4.</span> <span class="nav-text">MySQL中的事务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多版本并发控制"><span class="nav-number">4.</span> <span class="nav-text">多版本并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的存储引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql时间线"><span class="nav-number">6.</span> <span class="nav-text">Mysql时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的开发模式"><span class="nav-number">7.</span> <span class="nav-text">Mysql的开发模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">MySQL逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接管理与安全性"><span class="nav-number">1.1.</span> <span class="nav-text">连接管理与安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化与执行"><span class="nav-number">1.2.</span> <span class="nav-text">优化与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁粒度"><span class="nav-number">2.2.</span> <span class="nav-text">锁粒度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#隔离级别"><span class="nav-number">3.1.</span> <span class="nav-text">隔离级别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">3.2.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务日志"><span class="nav-number">3.3.</span> <span class="nav-text">事务日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中的事务"><span class="nav-number">3.4.</span> <span class="nav-text">MySQL中的事务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多版本并发控制"><span class="nav-number">4.</span> <span class="nav-text">多版本并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的存储引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB-存储引擎"><span class="nav-number">5.1.</span> <span class="nav-text">InnoDB 存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyISAM-存储引擎"><span class="nav-number">5.2.</span> <span class="nav-text">MyISAM 存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他存储引擎"><span class="nav-number">5.3.</span> <span class="nav-text">其他存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方存储引擎"><span class="nav-number">5.4.</span> <span class="nav-text">第三方存储引擎</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql时间线"><span class="nav-number">6.</span> <span class="nav-text">Mysql时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的开发模式"><span class="nav-number">7.</span> <span class="nav-text">Mysql的开发模式</span></a></li></ol></div>
             
 
           </div>
