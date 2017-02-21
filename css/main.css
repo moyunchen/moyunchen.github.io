@@ -1722,8 +1722,8 @@ pre .javascript .function {
   max-width: 120px;
   height: auto;
   border: 1px solid #eee;
-  border-radius: 60px;
-  -webkit-animation: change 10s linear infinite;
+  border-radius: 80px;
+  -webkit-animation: change 15s linear infinite;
 }
 @-webkit-keyframes change {
   0% {
@@ -1816,7 +1816,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff34ff;
+  background: #ff58ff;
 }
 .links-of-blogroll {
   font-size: 13px;
