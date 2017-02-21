@@ -87,31 +87,36 @@
 
 
 
-<meta name="description" content="规则每个格子的生死遵循下面的原则：
-如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
-如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
-在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
-
-代码1234567891011121314151617181920212223242">
+<meta name="description" content="MySQL的特性是它的存储引擎架构。
+这种设计将查询处理(Query Processing)及其他系统任务(Server Task) 和数据的存储/提取相分离。
+在使用时根据具体情况选择存储引擎。
+MySQL逻辑架构
+由上图可以主要分为三层：
+第一层架构 主要功能：连接处理，授权认证，安全等。
+第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="生命游戏">
-<meta property="og:url" content="http://yoursite.com/2017/02/20/lifegame/index.html">
+<meta property="og:title" content="第一章 MySQL架构与历史">
+<meta property="og:url" content="http://yoursite.com/2017/02/21/mysql-notes-chapter01/index.html">
 <meta property="og:site_name" content="王翔的技术博客">
-<meta property="og:description" content="规则每个格子的生死遵循下面的原则：
-如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
-如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
-在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
-
-代码1234567891011121314151617181920212223242">
-<meta property="og:updated_time" content="2017-02-20T13:00:10.000Z">
+<meta property="og:description" content="MySQL的特性是它的存储引擎架构。
+这种设计将查询处理(Query Processing)及其他系统任务(Server Task) 和数据的存储/提取相分离。
+在使用时根据具体情况选择存储引擎。
+MySQL逻辑架构
+由上图可以主要分为三层：
+第一层架构 主要功能：连接处理，授权认证，安全等。
+第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
+<meta property="og:image" content="http://img.dnbcw.info/2012316/3881291.png">
+<meta property="og:updated_time" content="2017-02-21T11:58:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="生命游戏">
-<meta name="twitter:description" content="规则每个格子的生死遵循下面的原则：
-如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。
-如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；
-在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）
-
-代码1234567891011121314151617181920212223242">
+<meta name="twitter:title" content="第一章 MySQL架构与历史">
+<meta name="twitter:description" content="MySQL的特性是它的存储引擎架构。
+这种设计将查询处理(Query Processing)及其他系统任务(Server Task) 和数据的存储/提取相分离。
+在使用时根据具体情况选择存储引擎。
+MySQL逻辑架构
+由上图可以主要分为三层：
+第一层架构 主要功能：连接处理，授权认证，安全等。
+第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
+<meta name="twitter:image" content="http://img.dnbcw.info/2012316/3881291.png">
 
 
 
@@ -139,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/20/lifegame/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/21/mysql-notes-chapter01/"/>
 
 
 
 
 
-  <title> 生命游戏 | 王翔的技术博客 </title>
+  <title> 第一章 MySQL架构与历史 | 王翔的技术博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/20/lifegame/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/21/mysql-notes-chapter01/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="王翔">
@@ -288,7 +293,7 @@
             
             
               
-                生命游戏
+                第一章 MySQL架构与历史
               
             
           </h1>
@@ -303,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T20:47:34+08:00">
-                2017-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-21T19:20:43+08:00">
+                2017-02-21
               </time>
             
 
@@ -322,8 +327,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/20/lifegame/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/20/lifegame/" itemprop="commentCount"></span>
+                <a href="/2017/02/21/mysql-notes-chapter01/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/mysql-notes-chapter01/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -349,17 +354,29 @@
       
 
       
-        <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p>每个格子的生死遵循下面的原则：</p>
-<p>如果一个细胞周围有3个细胞为生（一个细胞周围共有8个细胞），则该细胞为生（即该细胞若原先为死，则转为生，若原先为生，则保持不变） 。</p>
-<p>如果一个细胞周围有2个细胞为生，则该细胞的生死状态保持不变；</p>
-<p>在其它情况下，该细胞为死（即该细胞若原先为生，则转为死，若原先为死，则保持不变）</p>
+        <p>MySQL的特性是它的<code>存储引擎架构</code>。</p>
+<p>这种设计将查询处理(<code>Query Processing</code>)及其他系统任务(<code>Server Task</code>) 和<code>数据的存储/提取</code>相分离。</p>
+<p>在使用时根据具体情况选择存储引擎。</p>
+<h2 id="MySQL逻辑架构"><a href="#MySQL逻辑架构" class="headerlink" title="MySQL逻辑架构"></a>MySQL逻辑架构</h2><p><img src="http://img.dnbcw.info/2012316/3881291.png" alt="MySQL服务器逻辑架构图"></p>
+<p>由上图可以主要分为三层：</p>
+<p>第一层架构 主要功能：连接处理，授权认证，安全等。</p>
+<p>第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg: 日期、时间、数学、加密等函数)，所有跨存储引擎的功能都在这一层实现：存储过程、触发器、视图等。</p>
+<p>第三层架构 包含了存储引擎 负责MySQL中数据的存储和提取。 服务器通过API与存储引擎进行通信，API屏蔽了不同引擎之间的差异。</p>
+<h3 id="连接管理与安全性"><a href="#连接管理与安全性" class="headerlink" title="连接管理与安全性"></a>连接管理与安全性</h3><p>每个客户端连接都会在服务器进程中拥有一个线程，这个连接的查询只会在这个单独的线程中执行。</p>
+<p>服务器会缓存线程或者使用线程池技术，不需要为每个连接创建一个线程，因而使用较少的线程来服务大量的连接。</p>
+<p>当客户连接服务器的时候，服务器会对其进行认证，基于用户名、密码、主机信息。</p>
+<p>客户连接上服务器，执行某个操作时，服务器会对其进行权限判断，判断该用户是否有权限进行该项操作。</p>
+<h3 id="优化与执行"><a href="#优化与执行" class="headerlink" title="优化与执行"></a>优化与执行</h3><p>MySQL会解析查询,并创建解析树，然后对其进行各种优化，包括重写查询、决定表的读取顺序，以及选取合适的索引等。</p>
+<p>用户可以使用特殊的关键字提示(<code>hint</code>)优化器，影响其决策过程。</p>
+<p>也可以请求优化器解释(<code>explain</code>)优化过程，让客户知道服务器如何进行优化。</p>
+<p>以便用户修改查询和schema、修改相关配置，使之高效运行。</p>
 <hr>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* @desc 求周围的存活的细胞个数</div><div class="line">* @param map 当前细胞地图</div><div class="line">* @param x y 当前细胞位置</div><div class="line">*/</div><div class="line">round: <span class="function">(<span class="params">map,x,y</span>) =&gt;</span>&#123;</div><div class="line">    <span class="keyword">let</span> count = <span class="number">0</span></div><div class="line">    map.forEach(<span class="function">(<span class="params">row,i</span>) =&gt;</span>&#123;</div><div class="line">        row.forEach(<span class="function">(<span class="params">col,j</span>) =&gt;</span>&#123;</div><div class="line">            <span class="keyword">if</span>((<span class="built_in">Math</span>.abs(i-x) == <span class="number">1</span> || <span class="built_in">Math</span>.abs(j-y) == <span class="number">1</span>) </div><div class="line">                &amp;&amp; <span class="built_in">Math</span>.abs(i-x) &lt; <span class="number">2</span> &amp;&amp; <span class="built_in">Math</span>.abs(j-y) &lt; <span class="number">2</span>)</div><div class="line">                count += map[i][j] ? map[i][j] : <span class="number">0</span></div><div class="line">        &#125;)</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">return</span> count</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 返回一个细胞下一时间的状态</div><div class="line"> * @param status 细胞当前状态 0:死 1:活</div><div class="line"> * @param count 细胞当前周围的存活细胞数量</div><div class="line"> */</div><div class="line">nextCellStatus: <span class="function">(<span class="params">status,count</span>) =&gt;</span>&#123;</div><div class="line">    <span class="keyword">if</span>(count == <span class="number">3</span>) <span class="keyword">return</span> <span class="number">1</span></div><div class="line">    <span class="keyword">if</span>(count == <span class="number">2</span>) <span class="keyword">return</span> status</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 生成下一时刻的地图</div><div class="line"> * @param 当前时刻的map</div><div class="line"> * @return 下一时刻的map</div><div class="line"> */</div><div class="line">nextMap: <span class="function">(<span class="params">map</span>) =&gt;</span>&#123;</div><div class="line">    <span class="keyword">let</span> newmap = map.map(<span class="function"><span class="params">row</span> =&gt;</span> row.map(<span class="function"><span class="params">col</span> =&gt;</span> <span class="number">0</span>))</div><div class="line">    map.map(<span class="function">(<span class="params">row,i</span>) =&gt;</span>&#123;</div><div class="line">        row.map(<span class="function">(<span class="params">col,j</span>) =&gt;</span>&#123;</div><div class="line">            <span class="keyword">const</span> count = round(map,i,j)</div><div class="line">            newmap[i][j] = nextCellStatus(map[i][j],count)</div><div class="line">        &#125;)</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">return</span> newmap</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>我已经把这个代码封装成一个npm包。通过 <code>npm install lifegame</code> 即可安装。</p>
-<p><a href="https://www.npmjs.com/package/lifegame" target="_blank" rel="external">npm地址</a></p>
-<p><a href="https://github.com/moyunchen/lifegame" target="_blank" rel="external">github地址</a></p>
-<p>有时间我会写一篇关于如何写一个npm包,然后在github上集成travis-ci进行自动化测试以及codecov进行代码覆盖率测试。</p>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><hr>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><hr>
+<h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
+<h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><hr>
+<h2 id="Mysql时间线"><a href="#Mysql时间线" class="headerlink" title="Mysql时间线"></a>Mysql时间线</h2><hr>
+<h2 id="Mysql的开发模式"><a href="#Mysql的开发模式" class="headerlink" title="Mysql的开发模式"></a>Mysql的开发模式</h2><hr>
 
       
     </div>
@@ -411,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/19/build-blog/" rel="next" title="个人博客搭建">
-                <i class="fa fa-chevron-left"></i> 个人博客搭建
+              <a href="/2017/02/20/mysql-notes/" rel="next" title="《高性能mysql》学习笔记">
+                <i class="fa fa-chevron-left"></i> 《高性能mysql》学习笔记
               </a>
             
           </div>
@@ -420,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/20/mysql-notes/" rel="prev" title="《高性能mysql》学习笔记">
-                《高性能mysql》学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -449,8 +462,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/20/lifegame/"
-           data-title="生命游戏" data-url="http://yoursite.com/2017/02/20/lifegame/">
+      <div class="ds-thread" data-thread-key="2017/02/21/mysql-notes-chapter01/"
+           data-title="第一章 MySQL架构与历史" data-url="http://yoursite.com/2017/02/21/mysql-notes-chapter01/">
       </div>
     
   </div>
@@ -578,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#规则"><span class="nav-number">1.</span> <span class="nav-text">规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">MySQL逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接管理与安全性"><span class="nav-number">1.1.</span> <span class="nav-text">连接管理与安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化与执行"><span class="nav-number">1.2.</span> <span class="nav-text">优化与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number">3.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多版本并发控制"><span class="nav-number">4.</span> <span class="nav-text">多版本并发控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的存储引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql时间线"><span class="nav-number">6.</span> <span class="nav-text">Mysql时间线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql的开发模式"><span class="nav-number">7.</span> <span class="nav-text">Mysql的开发模式</span></a></li></ol></div>
             
 
           </div>
