@@ -273,7 +273,7 @@
               
                 
                 <a class="post-title-link" href="/2017/02/21/mysql-notes-chapter01/" itemprop="url">
-                  第一章 MySQL架构与历史
+                  高性能MySQL 第一章 MySQL架构与历史
                 </a>
               
             
@@ -353,8 +353,18 @@
 <p>用户可以使用特殊的关键字提示(<code>hint</code>)优化器，影响其决策过程。</p>
 <p>也可以请求优化器解释(<code>explain</code>)优化过程，让客户知道服务器如何进行优化。</p>
 <p>以便用户修改查询和schema、修改相关配置，使之高效运行。</p>
+<p>优化器并不关心表使用的是什么存储引擎，但存储引擎对于优化查询是有影响的。</p>
+<p>对于SELECT语句，在解析查询之前，服务器会先检查查询缓存(<code>Query Cache</code>),如果能找到对应的查询，服务器就会直接返回查询缓存中的结果集。</p>
 <hr>
-<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><hr>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><p>无论何时，只要有多个查询需要在同一时刻修改数据，就会产生并发控制问题。</p>
+<p>MySQL的并发控制包含两个层面： 服务器层和存储引擎层</p>
+<p>MySQL的并发控制主要靠<code>锁</code>机制解决。</p>
+<h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p><code>读锁</code>(read lock) 也叫 <code>共享锁</code>(shared lock)</p>
+<p><code>写锁</code>(write lock) 也叫 <code>排他锁</code>(exclusive lock)</p>
+<p>读锁是共享的，是相互不阻塞的。多个客户可以同时读取同一个资源而不受干扰。</p>
+<p>写锁是排他的，一个写锁会阻塞其他的读锁和写锁。</p>
+<p>在实际的数据库系统中，每时每刻都会发生锁定。大多数时候，MySQL锁的内部管理都是透明的。</p>
+<h3 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h3><hr>
 <h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><hr>
