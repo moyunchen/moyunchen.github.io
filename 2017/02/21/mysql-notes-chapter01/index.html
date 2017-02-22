@@ -106,7 +106,7 @@ MySQL逻辑架构
 第一层架构 主要功能：连接处理，授权认证，安全等。
 第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
 <meta property="og:image" content="http://img.dnbcw.info/2012316/3881291.png">
-<meta property="og:updated_time" content="2017-02-22T12:23:53.000Z">
+<meta property="og:updated_time" content="2017-02-22T13:33:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第一章 MySQL架构与历史">
 <meta name="twitter:description" content="MySQL的特性是它的存储引擎架构。
@@ -534,6 +534,21 @@ MySQL逻辑架构
 </tr>
 </tbody>
 </table>
+<p>对于非事务型的表，相当于一直处于AUTOCOMMIT的状态。</p>
+<p>MySQL可以通过执行 <code>SET TRANSACTION ISOLATION LEVEL XXX</code> 命令来设置隔离级别，新的隔离级别会在下一个事务开始时生效。</p>
+<p>可以在配置文件中设置整个数据库的隔离级别，也可以只改变当前会话的隔离级别：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SET</span> <span class="keyword">SESSION</span> <span class="keyword">TRANSACTION</span> <span class="keyword">ISOLATION</span> <span class="keyword">LEVEL</span> <span class="keyword">READ</span> <span class="keyword">COMMIT</span></div></pre></td></tr></table></figure>
+<p><strong>在事务中混合使用存储引擎</strong></p>
+<p>MySQL服务器层不管理事务，事务是由下层的存储引擎实现的。所以在同一个事务中使用多种存储引擎是不可靠的。</p>
+<p>如果在事务中混合使用了事务型和非事务型存储引擎，在正常提交的情况下不会有什么问题。</p>
+<p>但是如果该事务需要回滚，非事务型的表上的变更无法撤销。</p>
+<p>在非事务型的表上执行事务相关操作的时候，MySQL通常不会发出提醒，也不会报错，只有在回滚的时候才会发一个警告：‘某些非事务型的表上的变更无法被回滚’。    </p>
+<p><strong>隐式和显示锁定</strong></p>
+<p>InnoDB会根据隔离级别在需要的时候自动加锁，这种锁定叫做<code>隐式锁定</code>。</p>
+<p>另外，InnoDB也支持通过特定的语句进行显示锁定，这些语句不属于SQL规范。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> ... <span class="keyword">LOCK</span> <span class="keyword">IN</span> <span class="keyword">SHARE</span> <span class="keyword">MODE</span></div><div class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FOR</span> <span class="keyword">UPDATE</span></div></pre></td></tr></table></figure>
+<p>MySQL也支持 <code>LOCK TABLES</code> 和 <code>UNLOCK TABLES</code> 语句，这是在服务器层实现的，与存储引擎无关，不能替代事务处理。</p>
+<p>但是建议任何时候都不要显示的执行 LOCK TABLES。 </p>
 <hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><p>InnoDB存储引擎是MySQL自5.5版本以来的默认事务型引擎，也是最重要、使用最广泛的存储引擎。</p>
