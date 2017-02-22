@@ -425,13 +425,18 @@
 <p>在这个级别，一个事务开始时，只能‘看到’已经提交的事务所作的修改。即：一个事务从开始知道提交之前，所作的修改对其他事务都是不可见的。</p>
 <p>场景：</p>
 <pre><code>在一个事务内，多次读同一个数据。在这个事务还没有结束时，另一个事务也访问该同一数据。
-那么，在第一个事务的两次读数据之间。由于第二个事务的修改，那么第一个事务读到的数据可能不一样，这样就发生了在一个事务内两次读到的数据是不一样的。
+那么，在第一个事务的两次读数据之间。
+由于第二个事务的修改，那么第一个事务读到的数据可能不一样。
+这样就发生了在一个事务内两次读到的数据是不一样的。
 </code></pre><p>因而这个级别有时候也叫做<code>不可重复读</code></p>
 <p><strong>REPEATABLE READ</strong> (可重复读)</p>
 <p>这个级别是MySQL默认的事务隔离级别</p>
 <p>这个级别解决了脏读的问题，保证在同一个事务中的多次读取同样记录的结果是一致的，但是该级别无法解决<code>幻读</code>(Phantom Read)的问题</p>
 <p>所谓幻读：就是当一个事务在读取某个范围的记录时，另一个事务又在该范围插入了新的记录，之前的事务再次读取该范围的数据时，会产生<code>幻行</code>(Phantom Row)</p>
 <p><strong>SERIALIZABLE</strong> (可串行化)</p>
+<p>这个级别是最高的隔离级别，它通过强制事务串行执行，避免了前面的幻读的的问题。</p>
+<p>其他的隔离级别中，各个事务还是有一定程度的并发执行。</p>
+<p>可串行化会在读取的每一行数据上都加锁，可能会导致大量的超时和锁争用的问题，实际中很少使用。</p>
 <table>
 <thead>
 <tr>
@@ -473,7 +478,18 @@
 </tr>
 </tbody>
 </table>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h3 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h3><h3 id="MySQL中的事务"><a href="#MySQL中的事务" class="headerlink" title="MySQL中的事务"></a>MySQL中的事务</h3><hr>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p><code>死锁</code>是指两个或者多个事务在同一资源上相互占用，并请求锁定对方占用的资源，从而导致恶性循环的现象。</p>
+<p>当多个事务试图以不同的顺序锁定资源时，就可能产生死锁。</p>
+<p>多个事务同时锁定同一个资源时，也会产生死锁。</p>
+<p>例如下面两个事务同时处理 StockPrice表：</p>
+<p>事务1<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</div><div class="line"><span class="keyword">UPDATE</span> StockPrice <span class="keyword">SET</span> <span class="keyword">close</span> = <span class="number">45.50</span> <span class="keyword">WHERE</span> stock_id = <span class="number">4</span>;</div><div class="line"><span class="keyword">UPDATE</span> StockPrice <span class="keyword">SET</span> <span class="keyword">close</span> = <span class="number">19.80</span> <span class="keyword">WHERE</span> stock_id = <span class="number">5</span>;</div><div class="line"><span class="keyword">COMMIT</span>;</div></pre></td></tr></table></figure></p>
+<p>事务2<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;</div><div class="line"><span class="keyword">UPDATE</span> StockPrice <span class="keyword">SET</span> <span class="keyword">close</span> = <span class="number">19.80</span> <span class="keyword">WHERE</span> stock_id = <span class="number">5</span>;</div><div class="line"><span class="keyword">UPDATE</span> StockPrice <span class="keyword">SET</span> <span class="keyword">close</span> = <span class="number">45.50</span> <span class="keyword">WHERE</span> stock_id = <span class="number">4</span>;</div><div class="line"><span class="keyword">COMMIT</span>;</div></pre></td></tr></table></figure></p>
+<p>如果刚好两个事务都执行了第一条UPDATE语句，更新了一条数据，同时也锁定了该行数据。</p>
+<p>然后每个事务都尝试去执行第二条UPDATE语句，发现已经被对方锁定，然后都等待对方释放锁，又都同时持有对方需要的锁，则陷入死循环。除非有外部接入才可能解除死锁。</p>
+<p>为了解决这个问题，数据库系统实现了各种死锁检测和死锁超时机制。</p>
+<p>死锁发生后，只有部分或者完全回滚其中一个事务，才能打破死锁。</p>
+<p>InnoDB处理死锁的办法是：将持有最少行级排他锁的事务进行回滚。</p>
+<h3 id="事务日志"><a href="#事务日志" class="headerlink" title="事务日志"></a>事务日志</h3><h3 id="MySQL中的事务"><a href="#MySQL中的事务" class="headerlink" title="MySQL中的事务"></a>MySQL中的事务</h3><hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><p>InnoDB存储引擎是MySQL自5.5版本以来的默认事务型引擎，也是最重要、使用最广泛的存储引擎。</p>
 <p>它被设计用来处理大量的短期事务，在非事务行的存储的需求中也很流行。</p>
