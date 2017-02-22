@@ -528,7 +528,11 @@
 <p>MySQL也支持 <code>LOCK TABLES</code> 和 <code>UNLOCK TABLES</code> 语句，这是在服务器层实现的，与存储引擎无关，不能替代事务处理。</p>
 <p>但是建议任何时候都不要显示的执行 LOCK TABLES。 </p>
 <hr>
-<h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
+<h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><p>MySQL的大多数事务型存储引擎实现的都不是简单的行级锁。基于提升并发性能的考虑，一般都实现了 <code>多版本并发控制（MVCC）</code>。</p>
+<p>不仅是MySQL,包括Oracle、PostgreSQL等其他数据库系统都实现了MVCC,但实现的机制不尽相同，因为MVCC没有统一的实现标准。</p>
+<p>MVCC可以认为是行级锁的一个变种，在很多情况下避免了加锁操作，因此开销更低。</p>
+<p>虽然实现机制不同，但大都实现了非阻塞的读操作，写操作也只锁定必要的行。</p>
+<hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><p>InnoDB存储引擎是MySQL自5.5版本以来的默认事务型引擎，也是最重要、使用最广泛的存储引擎。</p>
 <p>它被设计用来处理大量的短期事务，在非事务行的存储的需求中也很流行。</p>
 <p>除非有非常特别的原因需要使用其他的存储引擎，否则应该优先考虑使用InnoDB引擎。</p>
@@ -548,8 +552,54 @@
 <h3 id="选择合适的存储引擎"><a href="#选择合适的存储引擎" class="headerlink" title="选择合适的存储引擎"></a>选择合适的存储引擎</h3><p>大多数情况下，InnoDB都是正确的选择。</p>
 <p>只有遇到一些比较特殊的需求时，才会考虑用其他引擎。</p>
 <hr>
-<h2 id="Mysql时间线"><a href="#Mysql时间线" class="headerlink" title="Mysql时间线"></a>Mysql时间线</h2><hr>
-<h2 id="Mysql的开发模式"><a href="#Mysql的开发模式" class="headerlink" title="Mysql的开发模式"></a>Mysql的开发模式</h2><hr>
+<h2 id="Mysql时间线"><a href="#Mysql时间线" class="headerlink" title="Mysql时间线"></a>Mysql时间线</h2><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>时间</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>版本3.23</td>
+<td>2001</td>
+<td>这个版本的发布被认为是Mysql真正诞生的时刻，以MyISAM引擎代替之前的ISAM引擎，引入全文索引和复制</td>
+</tr>
+<tr>
+<td>版本4.0</td>
+<td>2003</td>
+<td>支持UNION和多表DELETE语法，重写了复制，InnoDB成为标配</td>
+</tr>
+<tr>
+<td>版本4.1</td>
+<td>2005</td>
+<td>支持子查询和INSERT ON DUPLICATE KEY UPDATE,支持UTF-8字符集</td>
+</tr>
+<tr>
+<td>版本5.0</td>
+<td>2006</td>
+<td>支持视图、触发器、存储过程和存储函数，ISAM代码被彻底移除</td>
+</tr>
+<tr>
+<td>版本5.1</td>
+<td>2008</td>
+<td>支持分区、基于行的复制以及Plugin API</td>
+</tr>
+<tr>
+<td>版本5.5</td>
+<td>2010</td>
+<td>InnoDB成为默认的存储引擎</td>
+</tr>
+</tbody>
+</table>
+<p>1995 MySQL AB公司创建。</p>
+<p>2008年 MySQL AB公司被SUN收购</p>
+<p>2010年 SUN公司被Oracle收购</p>
+<p>随着MySQL被Oracle收购，许多公司开始寻找替代品。</p>
+<p>倒向MariaDB: 谷歌(2013年9月) RedHat(2013年6月) 维基百科(2013年4月)</p>
+<p>倒向PostreSQL: 苹果(2011年)</p>
+<hr>
 
           
         
