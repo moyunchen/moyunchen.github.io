@@ -106,7 +106,7 @@ MySQL逻辑架构
 第一层架构 主要功能：连接处理，授权认证，安全等。
 第二层架构 大多数MySQL的核心服务都在这一层：查询解析、分析、优化、缓存以及所有的内置函数(eg:">
 <meta property="og:image" content="http://img.dnbcw.info/2012316/3881291.png">
-<meta property="og:updated_time" content="2017-02-22T12:20:12.000Z">
+<meta property="og:updated_time" content="2017-02-22T12:23:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第一章 MySQL架构与历史">
 <meta name="twitter:description" content="MySQL的特性是它的存储引擎架构。
@@ -520,7 +520,20 @@ MySQL逻辑架构
 <p>MySQL默认采用自动提交模式。也就是说，如果不是显示的开始一个事务，则每个查询都被当做一个事务执行操作。</p>
 <p>在当前连接中，可以通过设置 <code>AUTOCOMMIT</code> 变量来启用或者禁用自动提交模式。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'AUTOCOMMIT'</span>;</div></pre></td></tr></table></figure>
-<p>|Variable_name|Value|<br>|autocommit|ON|</p>
+<table>
+<thead>
+<tr>
+<th>Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autocommit</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h2 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h2><hr>
 <h2 id="Mysql的存储引擎"><a href="#Mysql的存储引擎" class="headerlink" title="Mysql的存储引擎"></a>Mysql的存储引擎</h2><h3 id="InnoDB-存储引擎"><a href="#InnoDB-存储引擎" class="headerlink" title="InnoDB 存储引擎"></a>InnoDB 存储引擎</h3><p>InnoDB存储引擎是MySQL自5.5版本以来的默认事务型引擎，也是最重要、使用最广泛的存储引擎。</p>
