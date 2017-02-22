@@ -370,7 +370,11 @@
       
         
           
-            <h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试（unit testing），是指对软件中的最小可测试单元进行检查和验证。</p>
+            <p>有没有羡慕github项目上有名的网站readme.md中都有<a href="https://travis-ci.org/moyunchen/lifegame" target="_blank" rel="external"><img src="https://travis-ci.org/moyunchen/lifegame.svg?branch=master" alt="Build Status"></a>这个标志？</p>
+<p>这个表示你的代码测过了单元测试，有了一定的可靠性。</p>
+<p>下面我将一步一步的告诉你怎么给你的github项目添加这个标志。</p>
+<p>就比如我这个项目readme，有好多标签，代码测试通过、代码覆盖率、npm下载量等等。<a href="https://github.com/moyunchen/lifegame" target="_blank" rel="external">查看</a></p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试（unit testing），是指对软件中的最小可测试单元进行检查和验证。</p>
 <p>一般单元测试是针对函数而言，对一个函数进行多组单元测试，用以保证这个函数的可靠性。</p>
 <hr>
 <h2 id="node单元测试"><a href="#node单元测试" class="headerlink" title="node单元测试"></a>node单元测试</h2><p>在node.js中，我们使用 <a href="https://github.com/mochajs/mocha" target="_blank" rel="external">mocha</a> 和 <a href="https://github.com/mjackson/expect" target="_blank" rel="external">expect</a></p>
@@ -378,8 +382,15 @@
 <p>示例代码</p>
 <p>//add.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a+b</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = add</div></pre></td></tr></table></figure></p>
 <p>//add.spec.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> expect = <span class="built_in">require</span>(<span class="string">'expect'</span>)</div><div class="line"><span class="keyword">const</span> add = <span class="built_in">require</span>(<span class="string">'./add'</span>)</div><div class="line"></div><div class="line">describe(<span class="string">'add function'</span>, () =&gt;&#123;</div><div class="line">    it(<span class="string">'should return 2 when 1 + 1'</span>, (next) =&gt;&#123;</div><div class="line">        expect(add(<span class="number">1</span>,<span class="number">1</span>)).toEqual(<span class="number">2</span>)</div><div class="line">        next()</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>在命令行输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install mocha -g </div><div class="line">mocha add.spec.js</div></pre></td></tr></table></figure></p>
+<p>在命令行输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install expect</div><div class="line">npm install mocha</div><div class="line">mocha add.spec.js</div></pre></td></tr></table></figure></p>
 <p>结果：<br><img src="http://oiije1eg7.bkt.clouddn.com/ut-result.png" alt="ut-result"></p>
+<p>即可看到单元测试的结果。</p>
+<p>当有多个测试文件时，可以使用 <code>mocha *</code> 命令来执行全部文件 </p>
+<p>我们也可以使用npm命令跑单元测试。</p>
+<p>在package.json文件中scripts中添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"node ./node_modules/mocha/bin/_mocha --timeout 10000 --bail ./*.spec.js"</span>,</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<p>然后运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run test</div></pre></td></tr></table></figure></p>
+<p>即可看到单元测试跑起来了。</p>
 <hr>
 <h2 id="CI"><a href="#CI" class="headerlink" title="CI"></a>CI</h2><hr>
 <h2 id="travis-ci"><a href="#travis-ci" class="headerlink" title="travis-ci"></a>travis-ci</h2><hr>
