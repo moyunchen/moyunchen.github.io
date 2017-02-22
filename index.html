@@ -370,7 +370,8 @@
       
         
           
-            <p>有没有羡慕github项目上有名的网站readme.md中都有<a href="https://travis-ci.org/moyunchen/lifegame" target="_blank" rel="external"><img src="https://travis-ci.org/moyunchen/lifegame.svg?branch=master" alt="Build Status"></a>这个标志？</p>
+            <p>有没有羡慕github项目上有名的网站readme.md中都有下面这个标志？</p>
+<p><a href="https://travis-ci.org/moyunchen/lifegame" target="_blank" rel="external"><img src="https://travis-ci.org/moyunchen/lifegame.svg?branch=master" alt="Build Status"></a></p>
 <p>这个表示你的代码测过了单元测试，有了一定的可靠性。</p>
 <p>下面我将一步一步的告诉你怎么给你的github项目添加这个标志。</p>
 <p>就比如我这个项目readme，有好多标签，代码测试通过、代码覆盖率、npm下载量等等。<a href="https://github.com/moyunchen/lifegame" target="_blank" rel="external">查看</a></p>
@@ -392,9 +393,29 @@
 <p>然后运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run test</div></pre></td></tr></table></figure></p>
 <p>即可看到单元测试跑起来了。</p>
 <hr>
-<h2 id="CI"><a href="#CI" class="headerlink" title="CI"></a>CI</h2><hr>
-<h2 id="travis-ci"><a href="#travis-ci" class="headerlink" title="travis-ci"></a>travis-ci</h2><hr>
-<h2 id="buliding-pass图标"><a href="#buliding-pass图标" class="headerlink" title="buliding/pass图标"></a>buliding/pass图标</h2>
+<h2 id="CI"><a href="#CI" class="headerlink" title="CI"></a>CI</h2><p>CI (持续集成)是一种软件开发实践，即团队开发成员经常集成它们的工作，通过每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。</p>
+<p>每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。</p>
+<hr>
+<h2 id="travis-ci"><a href="#travis-ci" class="headerlink" title="travis-ci"></a>travis-ci</h2><p><a href="https://travis-ci.org/" target="_blank" rel="external">travis-ci</a> 为github开源项目提供了自动化构建的功能。</p>
+<p>我们需要做的只需要如下几步：</p>
+<ol>
+<li>去 <a href="https://travis-ci.org/" target="_blank" rel="external">travis-ci官网</a> 注册账号，用github账号登录。</li>
+<li>将我们上面写的代码上传到你的github上。并在travis-ci上选择同步该项目。</li>
+<li>在你的项目的根目录添加 <code>.travis.yml</code> 文件。</li>
+<li>然后在你每次提交代码的时候，travis-ci 都会自动跑单元测试。</li>
+</ol>
+<p>如图：<br><img src="http://oiije1eg7.bkt.clouddn.com/travis-ci-01.png" alt="travis-ci"></p>
+<p><strong>.travis.yml文件编写</strong></p>
+<p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js:</div><div class="line">    - &quot;6&quot;</div><div class="line">git:</div><div class="line">  submodules: false</div><div class="line">install:</div><div class="line">    - npm install</div><div class="line">test:</div><div class="line">    - npm run test</div></pre></td></tr></table></figure></p>
+<p>详细的可以查看 <a href="https://docs.travis-ci.com/" target="_blank" rel="external">官方文档</a></p>
+<hr>
+<h2 id="buliding-pass图标"><a href="#buliding-pass图标" class="headerlink" title="buliding/pass图标"></a>buliding/pass图标</h2><p>当你的单元测试在travis-ci上面跑通过了，你就有属于你的项目的标签了。</p>
+<p><a href="https://travis-ci.org/[github" target="_blank" rel="external">https://travis-ci.org/[github</a> name]/[repository name]</p>
+<p>将上面的账号和项目改成你的就行了~</p>
+<p>当你的项目正在跑单元测试时，他会显示running.</p>
+<p>当你的项目单元测试挂了,他会显示failed.</p>
+<p>更多的标签可以<a href="http://shields.io/" target="_blank" rel="external">查看这里</a></p>
+
           
         
       
