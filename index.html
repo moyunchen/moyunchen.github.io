@@ -467,6 +467,8 @@
 <p><strong>SPATIAL索引</strong></p>
 <p>空间索引，建立在空间数据类型(如point和genomtry等)列上的索引。</p>
 <p><code>多个单列索引</code> VS <code>多列索引</code> </p>
+<p>多个单列索引与单个多列索引的查询效果不同，因为： </p>
+<p><code>执行查询时，MySQL只能使用一个索引，会从多个索引中选择一个限制最为严格的索引</code>。 </p>
 <hr>
 <h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><hr>
 <h2 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h2><hr>
