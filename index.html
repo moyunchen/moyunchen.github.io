@@ -379,15 +379,62 @@
 <p>如果在 ACTOR_ID 列上有索引，则MySQL将使用该索引找到 ACTOR_ID 为5的行。</p>
 <p>索引可以包含一个或多个列的值。</p>
 <p>如果索引包含多个列，那么列的顺序十分重要。因为MySQL只能高效的使用索引的最左前缀列。</p>
-<h3 id="索引的方式"><a href="#索引的方式" class="headerlink" title="索引的方式"></a>索引的方式</h3><p>索引有很多种类型，可以为不同的场景提供更好的性能。</p>
+<h3 id="索引的方式"><a href="#索引的方式" class="headerlink" title="索引的方式"></a>索引的方式</h3><p>索引有很多种方式，可以为不同的场景提供更好的性能。</p>
 <p>在MySQL中，索引是在存储引擎层而不是服务器层实现的。并没有统一的索引标准。</p>
-<p><strong>BTree索引</strong></p>
+<p>创建索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>|FULLTEXT|SPATIAL] <span class="keyword">INDEX</span> index_name [<span class="keyword">USING</span> index_type] </div><div class="line"> <span class="keyword">on</span> tbl_nam(index_col_name,……)</div></pre></td></tr></table></figure>
+<p>删除索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> tbl_name</div></pre></td></tr></table></figure>
+<p>其中，创建索引时 INDEX 前面的就是索引类型，USING 后面就是指定索引方式</p>
+<blockquote>
+<p>PS: 这里的索引类型与索引方式的概念与《高性能MySQL》中的不太一样，高性能MySQL中将BTree索引、Hash索引、全文索引都归入索引类型，我觉得不好理解。</p>
+</blockquote>
+<p><strong>B-Tree索引</strong></p>
+<p>一般谈论索引时，如果没有特别指明类型，那多半说的就是 <code>B-Tree</code> 索引，它使用 B-Tree 数据结构存储数据。</p>
+<p><img src="http://oiije1eg7.bkt.clouddn.com/B-Tree.png" alt="B-Tree索引"></p>
+<p>B-Tree索引能够加快访问数据的速度，因为存储引擎不需要全表扫描获取数据。</p>
+<p>B-Tree对索引列是<code>顺序存储</code>的，所以很适合查找<code>范围数据</code>。</p>
+<p>可以使用B-Tree索引的查询类型</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">查询类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">全值匹配</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">匹配最左前缀</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">匹配列前缀</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">匹配范围值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">精确匹配某一列并范围匹配另一列</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">只访问索引的查询</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Hash索引</strong></p>
 <p><strong>RTree索引</strong></p>
 <h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><p><strong>PRIMAR索引</strong></p>
 <p><strong>normal索引</strong></p>
 <p><strong>UNIQUE索引</strong></p>
 <p><strong>FULLTEXT索引</strong></p>
+<p><strong>SPATIAL</strong></p>
 <p><code>多个单列索引</code> VS <code>多列索引</code> </p>
 <hr>
 <h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><hr>
