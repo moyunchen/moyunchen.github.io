@@ -405,26 +405,27 @@
 <tbody>
 <tr>
 <td style="text-align:center">全值匹配</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">指的是和索引中的所有列进行匹配</td>
 </tr>
 <tr>
 <td style="text-align:center">匹配最左前缀</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">只使用多列索引中的第一列</td>
 </tr>
 <tr>
 <td style="text-align:center">匹配列前缀</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">匹配第一列的开头部分</td>
 </tr>
 <tr>
 <td style="text-align:center">匹配范围值</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">匹配第一列的某个范围</td>
 </tr>
 <tr>
 <td style="text-align:center">精确匹配某一列并范围匹配另一列</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">第一列相等，第二列范围匹配</td>
 </tr>
 <tr>
 <td style="text-align:center">只访问索引的查询</td>
+<td style="text-align:center">查询只需要访问索引，无需访问数据行</td>
 </tr>
 </tbody>
 </table>
