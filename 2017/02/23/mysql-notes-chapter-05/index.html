@@ -87,34 +87,34 @@
 
 
 
-<meta name="description" content="索引基础
-索引的优点索引是存储引擎快速找到记录的一种数据结构。
+<meta name="description" content="索引基础索引是存储引擎快速找到记录的一种数据结构。
 索引对于良好的性能非常关键，应该是对查询性能优化最有效的手段了。
 索引基础索引类似于一本书的目录，需要找到某个内容，在目录中找到对应的页数，翻到该页即可。
 在MySQL中，存储引擎先在索引中找到对应值，再根据找到的索引记录找到对应的数据行。
 比如下面的查询：
-1SELECT * FROM ACTOR WHERE ACTOR_ID =">
+1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
+如果在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高性能MySQL 第五章 创建高性能的索引">
 <meta property="og:url" content="http://yoursite.com/2017/02/23/mysql-notes-chapter-05/index.html">
 <meta property="og:site_name" content="王翔的技术博客">
-<meta property="og:description" content="索引基础
-索引的优点索引是存储引擎快速找到记录的一种数据结构。
+<meta property="og:description" content="索引基础索引是存储引擎快速找到记录的一种数据结构。
 索引对于良好的性能非常关键，应该是对查询性能优化最有效的手段了。
 索引基础索引类似于一本书的目录，需要找到某个内容，在目录中找到对应的页数，翻到该页即可。
 在MySQL中，存储引擎先在索引中找到对应值，再根据找到的索引记录找到对应的数据行。
 比如下面的查询：
-1SELECT * FROM ACTOR WHERE ACTOR_ID =">
-<meta property="og:updated_time" content="2017-02-23T14:52:18.000Z">
+1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
+如果在">
+<meta property="og:updated_time" content="2017-02-23T14:54:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第五章 创建高性能的索引">
-<meta name="twitter:description" content="索引基础
-索引的优点索引是存储引擎快速找到记录的一种数据结构。
+<meta name="twitter:description" content="索引基础索引是存储引擎快速找到记录的一种数据结构。
 索引对于良好的性能非常关键，应该是对查询性能优化最有效的手段了。
 索引基础索引类似于一本书的目录，需要找到某个内容，在目录中找到对应的页数，翻到该页即可。
 在MySQL中，存储引擎先在索引中找到对应值，再根据找到的索引记录找到对应的数据行。
 比如下面的查询：
-1SELECT * FROM ACTOR WHERE ACTOR_ID =">
+1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
+如果在">
 
 
 
@@ -390,8 +390,7 @@
       
 
       
-        <h2 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a>索引基础</h2><hr>
-<h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><p>索引是存储引擎快速找到记录的一种数据结构。</p>
+        <h2 id="索引基础"><a href="#索引基础" class="headerlink" title="索引基础"></a>索引基础</h2><p>索引是存储引擎快速找到记录的一种数据结构。</p>
 <p>索引对于良好的性能非常关键，应该是对查询性能优化最有效的手段了。</p>
 <h3 id="索引基础-1"><a href="#索引基础-1" class="headerlink" title="索引基础"></a>索引基础</h3><p>索引类似于一本书的目录，需要找到某个内容，在目录中找到对应的页数，翻到该页即可。</p>
 <p>在MySQL中，存储引擎先在索引中找到对应值，再根据找到的索引记录找到对应的数据行。</p>
@@ -411,6 +410,7 @@
 <p><strong>FULLTEXT索引</strong></p>
 <p><code>多个单列索引</code> VS <code>多列索引</code> </p>
 <hr>
+<h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><hr>
 <h2 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h2><hr>
 <h2 id="索引案例学习"><a href="#索引案例学习" class="headerlink" title="索引案例学习"></a>索引案例学习</h2><hr>
 <h2 id="维护索引和表"><a href="#维护索引和表" class="headerlink" title="维护索引和表"></a>维护索引和表</h2><hr>
@@ -646,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引基础"><span class="nav-number">1.</span> <span class="nav-text">索引基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">2.</span> <span class="nav-text">索引的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引基础-1"><span class="nav-number">2.1.</span> <span class="nav-text">索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">索引的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的类型"><span class="nav-number">2.1.2.</span> <span class="nav-text">索引的类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能的索引策略"><span class="nav-number">3.</span> <span class="nav-text">高性能的索引策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引案例学习"><span class="nav-number">4.</span> <span class="nav-text">索引案例学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#维护索引和表"><span class="nav-number">5.</span> <span class="nav-text">维护索引和表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引基础"><span class="nav-number">1.</span> <span class="nav-text">索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引基础-1"><span class="nav-number">1.1.</span> <span class="nav-text">索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">索引的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">索引的类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">2.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能的索引策略"><span class="nav-number">3.</span> <span class="nav-text">高性能的索引策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引案例学习"><span class="nav-number">4.</span> <span class="nav-text">索引案例学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#维护索引和表"><span class="nav-number">5.</span> <span class="nav-text">维护索引和表</span></a></li></ol></div>
             
 
           </div>
