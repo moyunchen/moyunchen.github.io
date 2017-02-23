@@ -106,7 +106,7 @@
 1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
 如果在 ACT">
 <meta property="og:image" content="http://oiije1eg7.bkt.clouddn.com/B-Tree.png">
-<meta property="og:updated_time" content="2017-02-23T15:44:02.000Z">
+<meta property="og:updated_time" content="2017-02-23T16:02:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第五章 创建高性能的索引">
 <meta name="twitter:description" content="索引是存储引擎快速找到记录的一种数据结构。
@@ -462,12 +462,32 @@
 <p>3.如果查询中有某个列的范围查找，那么其右边的所有列都无法使用索引优化查找。</p>
 <p>由上可知，多列索引中，索引列的顺序是多么的重要。</p>
 <p><strong>Hash索引</strong></p>
-<p><strong>RTree索引</strong></p>
+<p>哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效。</p>
+<p>在MySQL存储引擎中，只有Memmory引擎支持哈希索引，这也是Memmory引擎默认的索引方式，Memmory也支持B-Tree索引。</p>
+<p>优点：查询速度很快。</p>
+<p>缺点：</p>
+<p>1.哈希索引只包含哈希值和行指针，不存储字段值，不能使用索引中的值避免读取行。</p>
+<p>2.哈希索引数据不是顺序存储，无法用于排序。</p>
+<p>3.哈希索引不支持部分索引匹配查找，因为哈希索引使用全部列计算哈希值。</p>
+<p>4.哈希索引只支持等值比较查询，=、IN、&lt;=&gt;,也不支持任何范围查询。</p>
+<ol>
+<li><p>当存在很多哈希冲突时，查询效率会低。</p>
+</li>
+<li><p>当存在很多哈希冲突时，一些索引维护操作的代价也会很高。</p>
+</li>
+</ol>
+<p><strong>RTree索引 (空间数据索引)</strong></p>
+<p>MyISAM表支持空间索引，可以用作地理数据存储。</p>
 <h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><p><strong>PRIMAR索引</strong></p>
+<p>创建表的主键时自动创建，是一种UNIQUE索引。</p>
 <p><strong>normal索引</strong></p>
+<p>默认的索引类型。</p>
 <p><strong>UNIQUE索引</strong></p>
+<p>唯一索引，不可重复。</p>
 <p><strong>FULLTEXT索引</strong></p>
-<p><strong>SPATIAL</strong></p>
+<p>全文搜索的索引，一般用于大段的文章。一两行的数据，还是适合用默认索引。</p>
+<p><strong>SPATIAL索引</strong></p>
+<p>空间索引，建立在空间数据类型(如point和genomtry等)列上的索引。</p>
 <p><code>多个单列索引</code> VS <code>多列索引</code> </p>
 <hr>
 <h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><hr>
