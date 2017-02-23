@@ -106,7 +106,7 @@
 1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
 如果在 ACT">
 <meta property="og:image" content="http://oiije1eg7.bkt.clouddn.com/B-Tree.png">
-<meta property="og:updated_time" content="2017-02-23T15:34:08.000Z">
+<meta property="og:updated_time" content="2017-02-23T15:44:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第五章 创建高性能的索引">
 <meta name="twitter:description" content="索引是存储引擎快速找到记录的一种数据结构。
@@ -451,6 +451,16 @@
 </tr>
 </tbody>
 </table>
+<p>因为索引树中的节点是有序的，除了按值查找之外，索引还可用于查询中的<code>ORDER BY</code>操作。</p>
+<p>下面是B-Tree索引的一些限制。</p>
+<ol>
+<li><p>如果不是从(多列)索引的最左列开始查找，则无法使用索引。</p>
+</li>
+<li><p>不能跳过索引中的列，不能查找符合第一列和第三列的数据。如果不指名第二列，则只能使用索引的第一列。</p>
+</li>
+</ol>
+<p>3.如果查询中有某个列的范围查找，那么其右边的所有列都无法使用索引优化查找。</p>
+<p>由上可知，多列索引中，索引列的顺序是多么的重要。</p>
 <p><strong>Hash索引</strong></p>
 <p><strong>RTree索引</strong></p>
 <h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><p><strong>PRIMAR索引</strong></p>
