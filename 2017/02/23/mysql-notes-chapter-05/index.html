@@ -106,7 +106,7 @@
 1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
 如果在 ACT">
 <meta property="og:image" content="http://oiije1eg7.bkt.clouddn.com/B-Tree.png">
-<meta property="og:updated_time" content="2017-02-23T16:07:47.000Z">
+<meta property="og:updated_time" content="2017-02-23T16:13:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第五章 创建高性能的索引">
 <meta name="twitter:description" content="索引是存储引擎快速找到记录的一种数据结构。
@@ -492,8 +492,11 @@
 <p>多个单列索引与单个多列索引的查询效果不同，因为： </p>
 <p><code>执行查询时，MySQL只能使用一个索引，会从多个索引中选择一个限制最为严格的索引</code>。 </p>
 <hr>
-<h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><hr>
-<h2 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h2><hr>
+<h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><p>1.索引大大减少了服务器需要扫描的数据量。</p>
+<p>2.索引可以帮助服务器避免排序和临时表</p>
+<p>3.索引可以将随机IO变成顺序IO</p>
+<hr>
+<h2 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h2><h3 id="独立的列"><a href="#独立的列" class="headerlink" title="独立的列"></a>独立的列</h3><h3 id="前缀索引和索引选择性"><a href="#前缀索引和索引选择性" class="headerlink" title="前缀索引和索引选择性"></a>前缀索引和索引选择性</h3><h3 id="多列索引"><a href="#多列索引" class="headerlink" title="多列索引"></a>多列索引</h3><h3 id="选择合适的索引列顺序"><a href="#选择合适的索引列顺序" class="headerlink" title="选择合适的索引列顺序"></a>选择合适的索引列顺序</h3><h3 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h3><h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><h3 id="使用索引扫描来做排序"><a href="#使用索引扫描来做排序" class="headerlink" title="使用索引扫描来做排序"></a>使用索引扫描来做排序</h3><h3 id="压缩-前缀压缩-索引"><a href="#压缩-前缀压缩-索引" class="headerlink" title="压缩(前缀压缩)索引"></a>压缩(前缀压缩)索引</h3><h3 id="冗余和重复索引"><a href="#冗余和重复索引" class="headerlink" title="冗余和重复索引"></a>冗余和重复索引</h3><h3 id="未使用的索引"><a href="#未使用的索引" class="headerlink" title="未使用的索引"></a>未使用的索引</h3><h3 id="索引和锁"><a href="#索引和锁" class="headerlink" title="索引和锁"></a>索引和锁</h3><hr>
 <h2 id="索引案例学习"><a href="#索引案例学习" class="headerlink" title="索引案例学习"></a>索引案例学习</h2><hr>
 <h2 id="维护索引和表"><a href="#维护索引和表" class="headerlink" title="维护索引和表"></a>维护索引和表</h2><hr>
 
@@ -728,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引基础"><span class="nav-number">1.</span> <span class="nav-text">索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的方式"><span class="nav-number">1.1.</span> <span class="nav-text">索引的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的类型"><span class="nav-number">1.2.</span> <span class="nav-text">索引的类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">2.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能的索引策略"><span class="nav-number">3.</span> <span class="nav-text">高性能的索引策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引案例学习"><span class="nav-number">4.</span> <span class="nav-text">索引案例学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#维护索引和表"><span class="nav-number">5.</span> <span class="nav-text">维护索引和表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引基础"><span class="nav-number">1.</span> <span class="nav-text">索引基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的方式"><span class="nav-number">1.1.</span> <span class="nav-text">索引的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的类型"><span class="nav-number">1.2.</span> <span class="nav-text">索引的类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的优点"><span class="nav-number">2.</span> <span class="nav-text">索引的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高性能的索引策略"><span class="nav-number">3.</span> <span class="nav-text">高性能的索引策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#独立的列"><span class="nav-number">3.1.</span> <span class="nav-text">独立的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀索引和索引选择性"><span class="nav-number">3.2.</span> <span class="nav-text">前缀索引和索引选择性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多列索引"><span class="nav-number">3.3.</span> <span class="nav-text">多列索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择合适的索引列顺序"><span class="nav-number">3.4.</span> <span class="nav-text">选择合适的索引列顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引"><span class="nav-number">3.5.</span> <span class="nav-text">聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖索引"><span class="nav-number">3.6.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用索引扫描来做排序"><span class="nav-number">3.7.</span> <span class="nav-text">使用索引扫描来做排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩-前缀压缩-索引"><span class="nav-number">3.8.</span> <span class="nav-text">压缩(前缀压缩)索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冗余和重复索引"><span class="nav-number">3.9.</span> <span class="nav-text">冗余和重复索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未使用的索引"><span class="nav-number">3.10.</span> <span class="nav-text">未使用的索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和锁"><span class="nav-number">3.11.</span> <span class="nav-text">索引和锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引案例学习"><span class="nav-number">4.</span> <span class="nav-text">索引案例学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#维护索引和表"><span class="nav-number">5.</span> <span class="nav-text">维护索引和表</span></a></li></ol></div>
             
 
           </div>
