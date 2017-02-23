@@ -106,7 +106,7 @@
 1SELECT * FROM ACTOR WHERE ACTOR_ID = 5;
 如果在 ACT">
 <meta property="og:image" content="http://oiije1eg7.bkt.clouddn.com/B-Tree.png">
-<meta property="og:updated_time" content="2017-02-23T16:13:23.000Z">
+<meta property="og:updated_time" content="2017-02-23T16:14:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能MySQL 第五章 创建高性能的索引">
 <meta name="twitter:description" content="索引是存储引擎快速找到记录的一种数据结构。
@@ -470,12 +470,8 @@
 <p>2.哈希索引数据不是顺序存储，无法用于排序。</p>
 <p>3.哈希索引不支持部分索引匹配查找，因为哈希索引使用全部列计算哈希值。</p>
 <p>4.哈希索引只支持等值比较查询，=、IN、&lt;=&gt;,也不支持任何范围查询。</p>
-<ol>
-<li><p>当存在很多哈希冲突时，查询效率会低。</p>
-</li>
-<li><p>当存在很多哈希冲突时，一些索引维护操作的代价也会很高。</p>
-</li>
-</ol>
+<p>5.当存在很多哈希冲突时，查询效率会低。</p>
+<p>6.当存在很多哈希冲突时，一些索引维护操作的代价也会很高。</p>
 <p><strong>RTree索引 (空间数据索引)</strong></p>
 <p>MyISAM表支持空间索引，可以用作地理数据存储。</p>
 <h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><p><strong>PRIMAR索引</strong></p>
@@ -488,7 +484,7 @@
 <p>全文搜索的索引，一般用于大段的文章。一两行的数据，还是适合用默认索引。</p>
 <p><strong>SPATIAL索引</strong></p>
 <p>空间索引，建立在空间数据类型(如point和genomtry等)列上的索引。</p>
-<p><code>多个单列索引</code> VS <code>多列索引</code> </p>
+<p><code>多个单列索引</code> VS <code>多列索引</code>:</p>
 <p>多个单列索引与单个多列索引的查询效果不同，因为： </p>
 <p><code>执行查询时，MySQL只能使用一个索引，会从多个索引中选择一个限制最为严格的索引</code>。 </p>
 <hr>
