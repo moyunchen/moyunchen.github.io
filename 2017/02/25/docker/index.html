@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-25T15:42:26.000Z">
+<meta property="og:updated_time" content="2017-02-25T15:45:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker教程">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -432,12 +432,10 @@ web应用的自动化打包和发布；
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RUN &lt;command&gt; (the command is run in a shell - `/bin/sh -c`)  </div><div class="line">RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot; ... ]  (exec form)</div></pre></td></tr></table></figure>
 </li>
 <li><p>设置container启动时执行的操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;] (like an exec, this is the preferred form)  </div><div class="line">CMD command param1 param2 (as a shell)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;] (like an exec, this is the preferred form)  </div><div class="line">CMD command param1 param2 (as a shell)</div><div class="line"></div><div class="line">//当Dockerfile指定了ENTRYPOINT，那么使用下面的格式：</div><div class="line">CMD [&quot;param1&quot;,&quot;param2&quot;] (as default parameters to ENTRYPOINT)</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>当Dockerfile指定了ENTRYPOINT，那么使用下面的格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CMD [&quot;param1&quot;,&quot;param2&quot;] (as default parameters to ENTRYPOINT)</div></pre></td></tr></table></figure></p>
-<ol>
-<li>设置container启动时执行的操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;] (like an exec, the preferred form)  </div><div class="line">ENTRYPOINT command param1 param2 (as a shell)</div></pre></td></tr></table></figure>
+<li><p>设置container启动时执行的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;] (like an exec, the preferred form)  </div><div class="line">ENTRYPOINT command param1 param2 (as a shell)</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>该指令的使用分为两种情况，一种是独自使用，另一种和CMD指令配合使用。<br>当独自使用时，如果你还使用了CMD命令且CMD是一个完整的可执行的命令，那么CMD指令和ENTRYPOINT会互相覆盖只有最后一个CMD或者ENTRYPOINT有效。<br>另一种用法和CMD指令配合使用来指定ENTRYPOINT的默认参数，这时CMD指令不是一个完整的可执行命令，仅仅是参数部分；<br>ENTRYPOINT指令只能使用JSON方式指定执行命令，而不能指定参数。</p>
