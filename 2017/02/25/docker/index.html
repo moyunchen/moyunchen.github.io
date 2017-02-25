@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-25T15:56:55.000Z">
+<meta property="og:updated_time" content="2017-02-25T16:02:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker教程">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -444,9 +444,19 @@ web应用的自动化打包和发布；
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">EXPOSE &lt;port&gt; [&lt;port&gt;...]   </div><div class="line"></div><div class="line"># 映射一个端口  </div><div class="line">EXPOSE port1  </div><div class="line"># 相应的运行容器使用的命令  </div><div class="line">docker run -p port1 image  </div><div class="line">  </div><div class="line"># 映射多个端口  </div><div class="line">EXPOSE port1 port2 port3  </div><div class="line"># 相应的运行容器使用的命令  </div><div class="line">docker run -p port1 -p port2 -p port3 image  </div><div class="line"># 还可以指定需要映射到宿主机器上的某个端口号  </div><div class="line">docker run -p host_port1:port1 -p host_port2:port2 -p host_port3:port3 image</div></pre></td></tr></table></figure>
 </li>
 <li><p>设置环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ENV &lt;key&gt; &lt;value&gt; </div><div class="line">``` </div><div class="line"></div><div class="line">9. 从src复制文件到container的dest路径</div><div class="line">``` shell</div><div class="line">ADD &lt;src&gt; &lt;dest&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ENV &lt;key&gt; &lt;value&gt; </div><div class="line">``` </div><div class="line"></div><div class="line">9. 从src复制文件到container的dest路径</div><div class="line">``` shell</div><div class="line">ADD &lt;src&gt; &lt;dest&gt;</div><div class="line"></div><div class="line">&lt;src&gt; 是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件url;</div><div class="line">&lt;dest&gt; 是container中的绝对路径s</div></pre></td></tr></table></figure>
 </li>
 <li><p>指定挂载点</p>
+</li>
+</ol>
+<p>设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">VOLUME [&quot;&lt;mountpoint&gt;&quot;]  </div><div class="line"></div><div class="line">eg:</div><div class="line">VOLUME [&quot;/tmp/data&quot;]</div></pre></td></tr></table></figure>
+<ol>
+<li><p>切换目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WORKDIR /path/to/workdir  </div><div class="line"></div><div class="line"># 在 /p1/p2 下执行 vim a.txt  </div><div class="line">WORKDIR /p1 WORKDIR p2 RUN vim a.txt</div></pre></td></tr></table></figure>
+</li>
+<li><p>在子镜像中执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ONBUILD &lt;Dockerfile关键字&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="docker中运行express项目"><a href="#docker中运行express项目" class="headerlink" title="docker中运行express项目"></a>docker中运行express项目</h2><h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><h2 id="daocloud"><a href="#daocloud" class="headerlink" title="daocloud"></a>daocloud</h2>
