@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-25T16:02:47.000Z">
+<meta property="og:updated_time" content="2017-02-25T16:04:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker教程">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -421,7 +421,7 @@ web应用的自动化打包和发布；
 <p>提示中，还建议我们运行<code>docker run -it ubuntu bash</code>命令。</p>
 <p>当我们运行以上命令时，可以发现我们进入了一个ubunt bash环境。</p>
 <p>就好像进入到一个运行ubuntu系统的虚拟机一样。</p>
-<h2 id="Images-amp-Container"><a href="#Images-amp-Container" class="headerlink" title="Images &amp; Container"></a>Images &amp; Container</h2><h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><ol>
+<h2 id="Images-amp-Container"><a href="#Images-amp-Container" class="headerlink" title="Images &amp; Container"></a>Images &amp; Container</h2><h3 id="Dockerfile详解"><a href="#Dockerfile详解" class="headerlink" title="Dockerfile详解"></a>Dockerfile详解</h3><ol>
 <li><p>指定基础image</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FROM &lt;image&gt;:&lt;tag&gt;</div></pre></td></tr></table></figure>
 </li>
@@ -447,11 +447,8 @@ web应用的自动化打包和发布；
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ENV &lt;key&gt; &lt;value&gt; </div><div class="line">``` </div><div class="line"></div><div class="line">9. 从src复制文件到container的dest路径</div><div class="line">``` shell</div><div class="line">ADD &lt;src&gt; &lt;dest&gt;</div><div class="line"></div><div class="line">&lt;src&gt; 是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件url;</div><div class="line">&lt;dest&gt; 是container中的绝对路径s</div></pre></td></tr></table></figure>
 </li>
 <li><p>指定挂载点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。</div><div class="line">VOLUME [&quot;&lt;mountpoint&gt;&quot;]  </div><div class="line"></div><div class="line">eg:</div><div class="line">VOLUME [&quot;/tmp/data&quot;]</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">VOLUME [&quot;&lt;mountpoint&gt;&quot;]  </div><div class="line"></div><div class="line">eg:</div><div class="line">VOLUME [&quot;/tmp/data&quot;]</div></pre></td></tr></table></figure>
-<ol>
 <li><p>切换目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WORKDIR /path/to/workdir  </div><div class="line"></div><div class="line"># 在 /p1/p2 下执行 vim a.txt  </div><div class="line">WORKDIR /p1 WORKDIR p2 RUN vim a.txt</div></pre></td></tr></table></figure>
 </li>
@@ -691,7 +688,7 @@ web应用的自动化打包和发布；
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">3.</span> <span class="nav-text">hello-world</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Images-amp-Container"><span class="nav-number">4.</span> <span class="nav-text">Images & Container</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile"><span class="nav-number">4.1.</span> <span class="nav-text">Dockerfile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker中运行express项目"><span class="nav-number">5.</span> <span class="nav-text">docker中运行express项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">6.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#daocloud"><span class="nav-number">7.</span> <span class="nav-text">daocloud</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">3.</span> <span class="nav-text">hello-world</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Images-amp-Container"><span class="nav-number">4.</span> <span class="nav-text">Images & Container</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile详解"><span class="nav-number">4.1.</span> <span class="nav-text">Dockerfile详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker中运行express项目"><span class="nav-number">5.</span> <span class="nav-text">docker中运行express项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">6.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#daocloud"><span class="nav-number">7.</span> <span class="nav-text">daocloud</span></a></li></ol></div>
             
 
           </div>

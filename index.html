@@ -399,7 +399,7 @@
 <p>提示中，还建议我们运行<code>docker run -it ubuntu bash</code>命令。</p>
 <p>当我们运行以上命令时，可以发现我们进入了一个ubunt bash环境。</p>
 <p>就好像进入到一个运行ubuntu系统的虚拟机一样。</p>
-<h2 id="Images-amp-Container"><a href="#Images-amp-Container" class="headerlink" title="Images &amp; Container"></a>Images &amp; Container</h2><h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><ol>
+<h2 id="Images-amp-Container"><a href="#Images-amp-Container" class="headerlink" title="Images &amp; Container"></a>Images &amp; Container</h2><h3 id="Dockerfile详解"><a href="#Dockerfile详解" class="headerlink" title="Dockerfile详解"></a>Dockerfile详解</h3><ol>
 <li><p>指定基础image</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FROM &lt;image&gt;:&lt;tag&gt;</div></pre></td></tr></table></figure>
 </li>
@@ -425,11 +425,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ENV &lt;key&gt; &lt;value&gt; </div><div class="line">``` </div><div class="line"></div><div class="line">9. 从src复制文件到container的dest路径</div><div class="line">``` shell</div><div class="line">ADD &lt;src&gt; &lt;dest&gt;</div><div class="line"></div><div class="line">&lt;src&gt; 是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件url;</div><div class="line">&lt;dest&gt; 是container中的绝对路径s</div></pre></td></tr></table></figure>
 </li>
 <li><p>指定挂载点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。</div><div class="line">VOLUME [&quot;&lt;mountpoint&gt;&quot;]  </div><div class="line"></div><div class="line">eg:</div><div class="line">VOLUME [&quot;/tmp/data&quot;]</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<p>设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">VOLUME [&quot;&lt;mountpoint&gt;&quot;]  </div><div class="line"></div><div class="line">eg:</div><div class="line">VOLUME [&quot;/tmp/data&quot;]</div></pre></td></tr></table></figure>
-<ol>
 <li><p>切换目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">WORKDIR /path/to/workdir  </div><div class="line"></div><div class="line"># 在 /p1/p2 下执行 vim a.txt  </div><div class="line">WORKDIR /p1 WORKDIR p2 RUN vim a.txt</div></pre></td></tr></table></figure>
 </li>
