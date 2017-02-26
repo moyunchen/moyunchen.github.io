@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-26T06:11:04.000Z">
+<meta property="og:updated_time" content="2017-02-26T06:14:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker从入门到实战">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -514,7 +514,7 @@ web应用的自动化打包和发布；
 <p>在上面过程中，我们运行容器的命令过于复杂，而且一次只能启动一个docker应用，管理起来也不是很方便。</p>
 <p>于是就有<code>懒惰</code>的程序员创建了docker-compose</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>以ubuntu系统举例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">curl -L https://github.com/docker/compose/releases/download/1.3.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</div><div class="line">chmod +x /usr/local/bin/docker-compose </div><div class="line"></div><div class="line">//这个装起来也好慢。。。是因为墙的原因吧。。</div></pre></td></tr></table></figure></p>
-<p>安装完成之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker-compose --version</div><div class="line"></div><div class="line">//可以看到</div></pre></td></tr></table></figure></p>
+<p>安装完成之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker-compose --version</div><div class="line"></div><div class="line">//可以看到 </div><div class="line">docker-compose 1.8.1</div></pre></td></tr></table></figure></p>
 <p>到这里，你的docker-compose就算安装成功了。</p>
 <h3 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h3><p>docker-compose.yml文件的目的是定义了一组应用，可以很方便的对多个应用进行发布。</p>
 <p>我的理解是取代了<code>docker run</code>，因为docker run 命令使用起来过于繁琐。</p>
