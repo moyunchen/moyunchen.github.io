@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-26T03:52:21.000Z">
+<meta property="og:updated_time" content="2017-02-26T04:12:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker教程">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -466,7 +466,29 @@ web应用的自动化打包和发布；
 </li>
 </ol>
 <hr>
-<h2 id="docker中运行express项目"><a href="#docker中运行express项目" class="headerlink" title="docker中运行express项目"></a>docker中运行express项目</h2><h3 id="生成express项目"><a href="#生成express项目" class="headerlink" title="生成express项目"></a>生成express项目</h3><h3 id="编写Dokerfile"><a href="#编写Dokerfile" class="headerlink" title="编写Dokerfile"></a>编写Dokerfile</h3><h3 id="生成镜像"><a href="#生成镜像" class="headerlink" title="生成镜像"></a>生成镜像</h3><h3 id="push镜像到docker-hub"><a href="#push镜像到docker-hub" class="headerlink" title="push镜像到docker hub"></a>push镜像到docker hub</h3><h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><h3 id="访问网站"><a href="#访问网站" class="headerlink" title="访问网站"></a>访问网站</h3><hr>
+<h2 id="docker中运行express项目"><a href="#docker中运行express项目" class="headerlink" title="docker中运行express项目"></a>docker中运行express项目</h2><p>现在让我们开始实战一下，生成一个express项目，将之使用docker部署。</p>
+<h3 id="生成express项目"><a href="#生成express项目" class="headerlink" title="生成express项目"></a>生成express项目</h3><p>使用express-generator生成expess项目。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g express-generator</div><div class="line">express express-jerrwy</div><div class="line"></div><div class="line">//可以看到项目创建出来了，目录如下</div><div class="line">Dockerfile  app.js  bin  node_modules  package.json  public  routes  views</div></pre></td></tr></table></figure></p>
+<p>安装依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm i </div><div class="line"></div><div class="line">//运行项目</div><div class="line">npm start</div></pre></td></tr></table></figure></p>
+<p>访问localhost:3000可以看到express 欢迎页面，表示express项目创建成功。</p>
+<h3 id="编写Dokerfile"><a href="#编写Dokerfile" class="headerlink" title="编写Dokerfile"></a>编写Dokerfile</h3><p>在项目根目录，新建一个Dockerfile文件，该文件名就叫Dockerfile,注意大小写，没有后缀，否则会报错。</p>
+<p>Dockerfile文件定义了如何创建Docker镜像。</p>
+<p>我的Dockerfile如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">FROM node:6.9.1</div><div class="line"></div><div class="line">USER root</div><div class="line"></div><div class="line">RUN npm config set registry https://registry.npm.taobao.org</div><div class="line"></div><div class="line">WORKDIR /var/workspace</div><div class="line">COPY package.json /var/workspace/package.json</div><div class="line">RUN npm install  &amp;&amp; npm cache clean</div><div class="line">COPY . /var/workspace</div></pre></td></tr></table></figure></p>
+<p>大致解释一下里面做了什么：</p>
+<ol>
+<li>我使用基础镜像 node:6.9.1,也就是一个镜像，里面装了node 6.9.1</li>
+<li>我镜像里面使用的用户是toot</li>
+<li>执行命令，设置 npm源</li>
+<li>设置镜像的工作目录</li>
+<li>将package.json拷贝到镜像的工作目录中</li>
+<li>安装依赖</li>
+<li>将项目代码拷贝到工作目录</li>
+</ol>
+<h3 id="生成镜像"><a href="#生成镜像" class="headerlink" title="生成镜像"></a>生成镜像</h3><p>Dockerfile写好之后，我们就可以生成镜像了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build . -t moyunchen/express-jerrwy:test</div></pre></td></tr></table></figure></p>
+<p><code>moyunchen/express-jerrwy:test</code>中<code>moyunchen</code>是我docker hub的账号名，<code>express-jerrwy</code>是镜像名称，<code>test</code>是镜像标签，相当于版本号。</p>
+<p>第一次生成镜像由于要下载基础镜像，速度可能比较慢，稍等十几分钟，出去喝杯茶~。</p>
+<p>生成成功之后，运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker images</div><div class="line"></div><div class="line">//可以看到 </div><div class="line">REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">moyunchen/express-jerrwy   test                754d9122fa3e        13 hours ago        663.7 MB</div></pre></td></tr></table></figure></p>
+<p>表明你的docker镜像已经生成啦~</p>
+<h3 id="push镜像到docker-hub"><a href="#push镜像到docker-hub" class="headerlink" title="push镜像到docker hub"></a>push镜像到docker hub</h3><h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><h3 id="访问网站"><a href="#访问网站" class="headerlink" title="访问网站"></a>访问网站</h3><hr>
 <h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><hr>
 <h2 id="daocloud"><a href="#daocloud" class="headerlink" title="daocloud"></a>daocloud</h2><hr>
 
