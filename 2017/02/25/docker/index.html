@@ -106,7 +106,7 @@ web应用的自动化打包和发布；
 自动化测试和持续集成、发布；
 在服务型环境中部署和调整数据库或其他的后台应用">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488044106906&di=6fd3d55d6f17f2c8a74d539637abbaed&imgtype=0&src=http%3A%2F%2Fs2.51cto.com%2Fwyfs02%2FM02%2F5C%2F09%2FwKioL1UZ_2XSppDSAAAjmR1-eDE735.jpg">
-<meta property="og:updated_time" content="2017-02-26T04:28:03.000Z">
+<meta property="og:updated_time" content="2017-02-26T04:45:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker从入门到实战">
 <meta name="twitter:description" content="简述Docker是一个开源的引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。
@@ -491,7 +491,13 @@ web应用的自动化打包和发布；
 <p>第一次生成镜像由于要下载基础镜像，速度可能比较慢，稍等十几分钟，出去喝杯茶~。</p>
 <p>生成成功之后，运行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker images</div><div class="line"></div><div class="line">//可以看到 </div><div class="line">REPOSITORY                TAG   IMAGE ID      CREATED       SIZE</div><div class="line">moyunchen/express-jerrwy  test  754d9122fa3e  13 hours ago  663.7 MB</div></pre></td></tr></table></figure></p>
 <p>表明你的docker镜像已经生成啦~</p>
-<p>其实，现在你就已经可以运行镜像，生成容器了。</p>
+<p>其实，现在你就已经可以运行镜像，生成容器了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run  -itd -p 3000:3000 --name express01  moyunchen/express-jerrwy:test  npm start</div></pre></td></tr></table></figure></p>
+<p>打开localhost:3000 我们可以看到express欢迎信息。说明我们的exress项目在docker部署成功了。</p>
+<p>查看docker容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker ps</div><div class="line"></div><div class="line">//可以看到</div><div class="line">CONTAINER ID  IMAGE                         COMMAND      CREATED        STATUS        PORTS                  NAMES</div><div class="line">b8106d910823  moyunchen/express-jerrwy:test &quot;npm start&quot;  6 seconds ago  Up 4 seconds  0.0.0.0:3000-&gt;3000/tcp express01</div></pre></td></tr></table></figure></p>
+<p>这就是我们正在运行中的docker容器，里面跑了我们的express服务。</p>
+<p>登录进去看看</p>
+<pre><code class="shell">
+</code></pre>
 <h3 id="push镜像到docker-hub"><a href="#push镜像到docker-hub" class="headerlink" title="push镜像到docker hub"></a>push镜像到docker hub</h3><h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><h3 id="访问网站"><a href="#访问网站" class="headerlink" title="访问网站"></a>访问网站</h3><hr>
 <h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><hr>
 <h2 id="daocloud"><a href="#daocloud" class="headerlink" title="daocloud"></a>daocloud</h2><hr>
