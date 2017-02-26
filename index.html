@@ -473,10 +473,20 @@
 <p>打开localhost:3000 我们可以看到express欢迎信息。说明我们的exress项目在docker部署成功了。</p>
 <p>查看docker容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker ps</div><div class="line"></div><div class="line">//可以看到</div><div class="line">CONTAINER ID  IMAGE                         COMMAND      CREATED        STATUS        PORTS                  NAMES</div><div class="line">b8106d910823  moyunchen/express-jerrwy:test &quot;npm start&quot;  6 seconds ago  Up 4 seconds  0.0.0.0:3000-&gt;3000/tcp express01</div></pre></td></tr></table></figure></p>
 <p>这就是我们正在运行中的docker容器，里面跑了我们的express服务。</p>
-<p>登录进去看看</p>
-<pre><code class="shell">
-</code></pre>
-<h3 id="push镜像到docker-hub"><a href="#push镜像到docker-hub" class="headerlink" title="push镜像到docker hub"></a>push镜像到docker hub</h3><h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><h3 id="访问网站"><a href="#访问网站" class="headerlink" title="访问网站"></a>访问网站</h3><hr>
+<p>登录进去看看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker exec -it b8106d910823  bash</div><div class="line"></div><div class="line">//可以看到</div><div class="line">root@b8106d910823:/var/workspace# ls</div><div class="line">Dockerfile  app.js  bin  node_modules  package.json  public  routes  views</div></pre></td></tr></table></figure></p>
+<p>这个就是docker中项目目录中我们的项目代码。</p>
+<h3 id="push镜像到docker-hub"><a href="#push镜像到docker-hub" class="headerlink" title="push镜像到docker hub"></a>push镜像到docker hub</h3><p>docker hub就好比github,是官方的镜像公有仓库。</p>
+<p>我们将镜像发布到这个上面，其他人就可以直接将你的镜像pull下来，然后运行。</p>
+<p>就不用单独的把代码pull下来，自己build镜像了。</p>
+<p>登录docker账号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker login</div><div class="line">//接下来他会让你输入账号密码邮箱 </div><div class="line">Username: [username]</div><div class="line">Password: [password]</div><div class="line">Email: xxxx@foxmail.com</div><div class="line">WARNING: login credentials saved in /root/.docker/config.json</div><div class="line">Login Succeeded</div></pre></td></tr></table></figure></p>
+<p>push镜像到docker hub仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker push moyunchen/express-jerrwy:test</div></pre></td></tr></table></figure></p>
+<p><code>moyunchen</code>是你的docker账号名，生成镜像的时候也必须是 <code>[username]/[imagename]</code> 这种格式</p>
+<p>push的过程异常缓慢。。。我这里用了几个小时。。。只是第一次才慢，后面是增量更新就会快很多。。</p>
+<p>成功之后，登录docker hub就可以看到你的镜像了。</p>
+<h3 id="从docker-hub拉取镜像，生成容器"><a href="#从docker-hub拉取镜像，生成容器" class="headerlink" title="从docker hub拉取镜像，生成容器"></a>从docker hub拉取镜像，生成容器</h3><p>现在，你的镜像推送到了docker hub上面了，让你的项目伙伴拉取项目镜像，运行起来。</p>
+<p>拉取镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull moyunchen/express-jerrwy:test</div></pre></td></tr></table></figure></p>
+<p>运行镜像，创建容器的步骤，跟上面一样。</p>
+<hr>
 <h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><hr>
 <h2 id="daocloud"><a href="#daocloud" class="headerlink" title="daocloud"></a>daocloud</h2><hr>
 
